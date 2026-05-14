@@ -1,0 +1,35 @@
+{
+  "course": {
+    "code": "CIS 5200",
+    "title": "Machine Learning",
+    "tagline": "An introduction to the theory, algorithms, and practice of modern machine learning.",
+    "description": "CIS 5200 covers the foundations of supervised and unsupervised learning, from linear models and SVMs through neural networks, with a strong emphasis on the underlying mathematics and on building intuition through hands-on assignments."
+  },
+  "semester": {
+    "label": "Fall 2026",
+    "meetingTime": "Mon/Wed 1:45-3:14pm",
+    "location": "Wu & Chen Auditorium, Levine Hall",
+    "weekOneMonday": "2026-08-24",
+    "lastDay": "2026-12-07"
+  },
+  "instructor": {
+    "name": "Jake Cohen",
+    "email": "jcohen@seas.upenn.edu",
+    "office": "Levine Hall 503",
+    "officeHours": "Wed 3:00-4:00pm"
+  },
+  "tas": [
+    {
+      "name": "TBA",
+      "email": "cis5200-staff@seas.upenn.edu",
+      "role": "Head TA"
+    }
+  ],
+  "links": {
+    "ed": "#",
+    "canvas": "#",
+    "gradescope": "#",
+    "officeHoursCalendar": "#",
+    "weingarten": "https://www.vpul.upenn.edu/lrc/"
+  }
+}

@@ -1,0 +1,122 @@
+import configJson from "@/content/config.json";
+import announcementsJson from "@/content/announcements.json";
+import scheduleJson from "@/content/schedule.json";
+
+export type CourseConfig = {
+  course: {
+    code: string;
+    title: string;
+    tagline: string;
+    description: string;
+  };
+  semester: {
+    label: string;
+    meetingTime: string;
+    location: string;
+    weekOneMonday: string;
+    lastDay: string;
+  };
+  instructor: {
+    name: string;
+    email: string;
+    office: string;
+    officeHours: string;
+  };
+  tas: Array<{ name: string; email: string; role: string }>;
+  links: {
+    ed: string;
+    canvas: string;
+    gradescope: string;
+    officeHoursCalendar: string;
+    weingarten: string;
+  };
+};
+
+export type Announcement = {
+  date: string;
+  title: string;
+  body: string;
+  pinned?: boolean;
+};
+
+export type Lecture = {
+  date: string;
+  topic: string;
+  isHoliday?: boolean;
+  slides?: string;
+  notes?: string;
+};
+
+export type Recitation = {
+  week: number;
+  title: string;
+  slides?: string;
+};
+
+export type Homework = {
+  name: string;
+  due: string;
+  href?: string;
+};
+
+export type Exam = {
+  name: string;
+  week: number;
+  dateLabel: string;
+  href?: string;
+};
+
+export type Schedule = {
+  lectures: Lecture[];
+  recitations: Recitation[];
+  homeworks: Homework[];
+  exams: Exam[];
+};
+
+export function getConfig(): CourseConfig {
+  return configJson as CourseConfig;
+}
+
+export function getAnnouncements(): Announcement[] {
+  const items = announcementsJson as Announcement[];
+  return [...items].sort((a, b) => {
+    if ((a.pinned ? 1 : 0) !== (b.pinned ? 1 : 0)) {
+      return (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0);
+    }
+    return b.date.localeCompare(a.date);
+  });
+}
+
+export function getLatestAnnouncements(limit = 3): Announcement[] {
+  return getAnnouncements().slice(0, limit);
+}
+
+export function getSchedule(): Schedule {
+  const s = scheduleJson as Schedule;
+  return {
+    lectures: [...s.lectures].sort((a, b) => a.date.localeCompare(b.date)),
+    recitations: [...s.recitations].sort((a, b) => a.week - b.week),
+    homeworks: [...s.homeworks].sort((a, b) => a.due.localeCompare(b.due)),
+    exams: [...s.exams].sort((a, b) => a.week - b.week),
+  };
+}
+
+function daysBetween(a: string, b: string): number {
+  const da = new Date(a + "T00:00:00").getTime();
+  const db = new Date(b + "T00:00:00").getTime();
+  return Math.floor((db - da) / (1000 * 60 * 60 * 24));
+}
+
+export function getWeekNumber(date: string): number {
+  const { weekOneMonday } = getConfig().semester;
+  const diff = daysBetween(weekOneMonday, date);
+  return Math.floor(diff / 7) + 1;
+}
+
+export function getCurrentWeek(today: Date = new Date()): number | null {
+  const { weekOneMonday, lastDay } = getConfig().semester;
+  const iso = today.toISOString().slice(0, 10);
+  if (iso < weekOneMonday) return null;
+  if (iso > lastDay) return null;
+  return Math.floor(daysBetween(weekOneMonday, iso) / 7) + 1;
+}
