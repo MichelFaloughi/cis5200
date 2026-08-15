@@ -9,7 +9,7 @@ description: CIS 5200 covers the foundations of supervised and unsupervised lear
 |---|---|
 | **Instructor** | Jake Gardner · Amy Gutmann Hall, 608B |
 | **Lecture** | Mon/Wed 1:45–3:14pm · Leidy Laboratories 10 |
-| **Office Hours** | Wed 3:00–4:00pm |
+| **Office Hours** | TBD |
 | **Email** | jacobrg@engineering.upenn.edu |
 
 ## Prerequisites
