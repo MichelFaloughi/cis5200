@@ -1,16 +1,19 @@
 ---
 title: TA Resources
-description: Materials and logistics for the CIS 5200 teaching staff.
+description: Materials for and by the CIS 5200 teaching staff.
 ---
 
-## Getting Started
+## Videos
 
-Resources for new and returning TAs will be posted here before the semester
-starts: grading guides, recitation materials, office hours logistics, and
-staff onboarding docs.
+- [YouTube playlist by Michel Faloughi (Head TA)](https://www.youtube.com/playlist?list=PL2lWy8o_RG-U5O6ODLj60zohcSKAN4VfR)
 
-## Useful Links
+## TA Notes from Past Semesters
 
-- Staff mailing list: [cis5200-staff@engineering.upenn.edu](mailto:cis5200-staff@engineering.upenn.edu)
-- Office hours calendar: TBD
-- Grading workflow (Gradescope): TBD
+A word of caution before you dive in: these notes were written by TAs from
+previous offerings of the course. The instructor, teaching style, and
+material can vary quite a bit from semester to semester, and machine
+learning itself moves fast, so parts of these notes may be outdated or may
+not match what is taught this semester. Treat them as a supplement, not as
+a substitute for this semester's lectures.
+
+Notes will be posted here.
