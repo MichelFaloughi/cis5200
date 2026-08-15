@@ -1,6 +1,14 @@
 import PageHeader from "@/components/PageHeader";
 import CalendarSubscribe from "@/components/CalendarSubscribe";
-import { getConfig, getOfficeHours } from "@/lib/content";
+import CalendarPreview, {
+  type PreviewEvent,
+} from "@/components/CalendarPreview";
+import {
+  getConfig,
+  getOfficeHours,
+  getSchedule,
+  type Weekday,
+} from "@/lib/content";
 
 export const metadata = { title: "Calendar" };
 
@@ -21,9 +29,65 @@ function formatTime(t: string): string {
   return `${hour12}:${String(m).padStart(2, "0")}${suffix}`;
 }
 
+const WEEKDAY_OFFSET: Record<Weekday, number> = {
+  MO: 0,
+  TU: 1,
+  WE: 2,
+  TH: 3,
+  FR: 4,
+  SA: 5,
+  SU: 6,
+};
+
+function addDays(dateIso: string, days: number): string {
+  const d = new Date(dateIso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+function buildPreviewData() {
+  const { semester } = getConfig();
+  const { lectures } = getSchedule();
+  const officeHours = getOfficeHours();
+
+  const events: Record<string, PreviewEvent[]> = {};
+  const push = (date: string, ev: PreviewEvent) => {
+    (events[date] ??= []).push(ev);
+  };
+
+  for (const lecture of lectures) {
+    push(lecture.date, {
+      label: lecture.isHoliday ? lecture.topic : `Lecture: ${lecture.topic}`,
+      type: lecture.isHoliday ? "holiday" : "lecture",
+    });
+  }
+
+  for (const oh of officeHours) {
+    for (
+      let date = addDays(semester.weekOneMonday, WEEKDAY_OFFSET[oh.weekday]);
+      date <= semester.lastDay;
+      date = addDays(date, 7)
+    ) {
+      push(date, { label: `OH: ${oh.name}`, type: "oh" });
+    }
+  }
+
+  const months: string[] = [];
+  let m = semester.weekOneMonday.slice(0, 7);
+  const lastMonth = semester.lastDay.slice(0, 7);
+  while (m <= lastMonth) {
+    months.push(m);
+    const [y, mo] = m.split("-").map(Number);
+    m = mo === 12 ? `${y + 1}-01` : `${y}-${String(mo + 1).padStart(2, "0")}`;
+  }
+
+  return { months, events };
+}
+
 export default function CalendarPage() {
   const config = getConfig();
   const officeHours = getOfficeHours();
+  const { months, events } = buildPreviewData();
 
   return (
     <div className="mx-auto max-w-content px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
@@ -40,6 +104,10 @@ export default function CalendarPage() {
           file is a one-time snapshot. In Google Calendar you can also go to
           Other calendars, then From URL, and paste the .ics link.
         </p>
+      </section>
+
+      <section aria-label="Calendar preview" className="mt-10">
+        <CalendarPreview months={months} events={events} />
       </section>
 
       <section aria-labelledby="lectures-heading" className="mt-10">
