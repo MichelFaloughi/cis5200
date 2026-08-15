@@ -25,7 +25,13 @@ const navLinks: NavItem[] = [
   },
   { label: "Staff", href: "/staff" },
   { label: "Calendar", href: "/calendar" },
-  { label: "Resources", href: "/resources" },
+  {
+    label: "Resources",
+    children: [
+      { label: "TA Resources", href: "/resources/ta-resources" },
+      { label: "External Resources", href: "/resources/external-resources" },
+    ],
+  },
 ];
 
 function isLeaf(item: NavItem): item is NavLeaf {
