@@ -3,15 +3,6 @@ title: Syllabus
 description: CIS 5200 covers the foundations of supervised and unsupervised learning, from linear models and SVMs through neural networks, with a strong emphasis on the underlying mathematics and on building intuition through hands-on assignments.
 ---
 
-## Logistics
-
-| | |
-|---|---|
-| **Instructor** | Jake Gardner · Amy Gutmann Hall, 608B |
-| **Lecture** | Mon/Wed 1:45–3:14pm · Leidy Laboratories 10 |
-| **Office Hours** | TBD |
-| **Email** | jacobrg@engineering.upenn.edu |
-
 ## Prerequisites
 
 - Linear algebra (matrix operations, eigendecomposition)
