@@ -81,7 +81,13 @@ export default function StaffCard({ member }: { member: StaffMember }) {
         </div>
         {(member.major || member.year) && (
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
-            {[member.major, member.year && `Class of ${member.year}`]
+            {[
+              member.major,
+              member.year &&
+                (/^\d{4}$/.test(member.year)
+                  ? `Class of ${member.year}`
+                  : member.year),
+            ]
               .filter(Boolean)
               .join(" · ")}
           </p>
