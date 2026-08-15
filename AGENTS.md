@@ -31,8 +31,14 @@ Content (data) is strictly separated from rendering (code):
     `{name, email?, major?, year?, photo?, linkedin?, website?, calendly?, bio?}`. Headshots live in
     `public/headshots/` (checked into the repo; no external storage) and
     `photo` is their public path, e.g. `/headshots/jane-doe.jpg`.
-  - `course-info/*.md`: long-form pages (syllabus, grading, policies) with
+  - `office-hours.json`: array of
+    `{name, weekday: "MO".."SU", start: "HH:MM", end: "HH:MM", location}`
+    (24h local times). Feeds the Calendar page and the .ics feed.
+  - `course-info/*.md` and `resources/*.md`: long-form pages with
     `title`/`description` frontmatter.
+- `lib/ics.ts` + `app/calendar.ics/route.ts`: statically generated
+  iCalendar feed (lectures + weekly office hours, America/New_York) that
+  students subscribe to from the Calendar page. No Google API involved.
 - `lib/content.ts`: typed getters over the JSON (`getConfig`,
   `getSchedule`, `getAnnouncements`) plus week math (`getWeekNumber`,
   `getCurrentWeek`). The exported types are the de facto schema for the

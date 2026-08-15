@@ -2,6 +2,7 @@ import configJson from "@/content/config.json";
 import announcementsJson from "@/content/announcements.json";
 import scheduleJson from "@/content/schedule.json";
 import staffJson from "@/content/staff.json";
+import officeHoursJson from "@/content/office-hours.json";
 
 export type CourseConfig = {
   course: {
@@ -13,6 +14,8 @@ export type CourseConfig = {
   semester: {
     label: string;
     meetingTime: string;
+    lectureStartTime: string;
+    lectureEndTime: string;
     location: string;
     weekOneMonday: string;
     lastDay: string;
@@ -94,6 +97,25 @@ export type Staff = {
 
 export function getStaff(): Staff {
   return staffJson as Staff;
+}
+
+export type Weekday = "MO" | "TU" | "WE" | "TH" | "FR" | "SA" | "SU";
+
+export type OfficeHour = {
+  name: string;
+  weekday: Weekday;
+  start: string;
+  end: string;
+  location: string;
+};
+
+export function getOfficeHours(): OfficeHour[] {
+  const order: Weekday[] = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"];
+  return [...(officeHoursJson as OfficeHour[])].sort(
+    (a, b) =>
+      order.indexOf(a.weekday) - order.indexOf(b.weekday) ||
+      a.start.localeCompare(b.start)
+  );
 }
 
 export function getConfig(): CourseConfig {
