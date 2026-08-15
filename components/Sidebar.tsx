@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { getConfig } from "@/lib/content";
+import Logo from "./Logo";
 
 type NavLeaf = { label: string; href: string };
 type NavGroup = { label: string; children: NavLeaf[] };
@@ -73,9 +74,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         onClick={onNavigate}
         className="group flex items-center gap-3 border-b border-neutral-200 px-5 py-4 dark:border-neutral-800"
       >
-        <span className="flex h-9 w-9 items-center justify-center rounded-md bg-penn-red-600 text-sm font-bold text-white shadow-sm transition-colors group-hover:bg-penn-red-700">
-          CIS
-        </span>
+        <Logo className="h-9 w-9" />
         <span className="flex flex-col leading-tight">
           <span className="text-base font-semibold tracking-tight text-penn-blue-600 dark:text-white">
             CIS 5200

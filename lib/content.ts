@@ -33,6 +33,7 @@ export type CourseConfig = {
     gradescope: string;
     officeHoursCalendar: string;
     weingarten: string;
+    recitationPlaylist: string;
   };
 };
 
