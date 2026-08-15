@@ -56,10 +56,16 @@ function buildPreviewData() {
   };
 
   for (const lecture of lectures) {
-    push(lecture.date, {
-      label: lecture.isHoliday ? lecture.topic : `Lecture: ${lecture.topic}`,
-      type: lecture.isHoliday ? "holiday" : "lecture",
-    });
+    if (lecture.isHoliday) {
+      push(lecture.date, { label: lecture.topic, type: "holiday" });
+    } else {
+      push(lecture.date, {
+        label: `Lecture: ${lecture.topic}`,
+        type: "lecture",
+        start: semester.lectureStartTime,
+        end: semester.lectureEndTime,
+      });
+    }
   }
 
   for (const oh of officeHours) {
@@ -68,7 +74,12 @@ function buildPreviewData() {
       date <= semester.lastDay;
       date = addDays(date, 7)
     ) {
-      push(date, { label: `OH: ${oh.name}`, type: "oh" });
+      push(date, {
+        label: `OH: ${oh.name}`,
+        type: "oh",
+        start: oh.start,
+        end: oh.end,
+      });
     }
   }
 

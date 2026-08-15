@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type PreviewEvent = {
   label: string;
   type: "lecture" | "oh" | "holiday";
+  // 24h "HH:MM" local times; events without times render as all-day.
+  start?: string;
+  end?: string;
 };
 
 const MONTH_NAMES = [
@@ -285,6 +288,44 @@ function MonthGrid({
   );
 }
 
+const HOUR_HEIGHT = 44; // px per hour; full day = 24 * HOUR_HEIGHT
+
+function minutesOf(time: string): number {
+  const [h, m] = time.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function hourLabel(h: number): string {
+  if (h === 0) return "12am";
+  if (h < 12) return `${h}am`;
+  if (h === 12) return "12pm";
+  return `${h - 12}pm`;
+}
+
+type TimedEvent = PreviewEvent & { start: string; end: string };
+
+// Assign overlapping events to side-by-side lanes within a day column.
+function layoutDay(dayEvents: TimedEvent[]) {
+  const sorted = [...dayEvents].sort(
+    (a, b) => minutesOf(a.start) - minutesOf(b.start)
+  );
+  const laneEnds: number[] = [];
+  const placed = sorted.map((ev) => {
+    const start = minutesOf(ev.start);
+    const end = Math.max(minutesOf(ev.end), start + 20);
+    let lane = laneEnds.findIndex((laneEnd) => laneEnd <= start);
+    if (lane === -1) {
+      lane = laneEnds.length;
+      laneEnds.push(end);
+    } else {
+      laneEnds[lane] = end;
+    }
+    return { ev, start, end, lane };
+  });
+  const lanes = Math.max(1, laneEnds.length);
+  return { placed, lanes };
+}
+
 function WeekGrid({
   startSunday,
   events,
@@ -294,52 +335,166 @@ function WeekGrid({
   events: Record<string, PreviewEvent[]>;
   todayIso: string;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // Open scrolled to 9am rather than midnight.
+    if (scrollRef.current) scrollRef.current.scrollTop = 9 * HOUR_HEIGHT;
+  }, []);
+
   const days = Array.from({ length: 7 }, (_, i) => addDays(startSunday, i));
+  const hasAllDay = days.some((d) =>
+    (events[d] ?? []).some((ev) => !ev.start || !ev.end)
+  );
+  const now = new Date();
+  const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-7">
-      {days.map((dateIso, i) => {
-        const dayEvents = events[dateIso] ?? [];
-        const isToday = dateIso === todayIso;
-        const dayNum = Number(dateIso.slice(8, 10));
-        return (
-          <div
-            key={dateIso}
-            className={
-              "border-b border-neutral-100 p-2 last:border-b-0 sm:min-h-[140px] sm:border-b-0 sm:border-r sm:last:border-r-0 dark:border-neutral-800/60 " +
-              (isToday ? "bg-penn-red-50/40 dark:bg-penn-red-900/10" : "")
-            }
-          >
-            <div className="flex items-center gap-1.5 sm:flex-col sm:items-start sm:gap-0.5">
-              <span className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-                {DAY_HEADERS[i]}
-              </span>
-              <span
-                className={
-                  "inline-flex h-5 w-5 items-center justify-center rounded-full text-xs " +
-                  (isToday
-                    ? "bg-penn-red-600 font-semibold text-white"
-                    : "text-neutral-500 dark:text-neutral-400")
-                }
-              >
-                {dayNum}
-              </span>
-            </div>
-            <div className="mt-1.5 flex flex-col gap-1">
-              {dayEvents.map((ev, j) => (
+    <div className="overflow-x-auto">
+      <div className="min-w-[640px]">
+        {/* Day-of-week header */}
+        <div className="grid grid-cols-[3.5rem_repeat(7,1fr)] border-b border-neutral-200 dark:border-neutral-800">
+          <div />
+          {days.map((dateIso, i) => {
+            const isToday = dateIso === todayIso;
+            return (
+              <div key={dateIso} className="py-2 text-center">
+                <span className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                  {DAY_HEADERS[i]}
+                </span>{" "}
                 <span
-                  key={j}
                   className={
-                    "rounded px-1.5 py-1 text-xs leading-snug " + chipClass[ev.type]
+                    "inline-flex h-5 w-5 items-center justify-center rounded-full text-xs " +
+                    (isToday
+                      ? "bg-penn-red-600 font-semibold text-white"
+                      : "text-neutral-500 dark:text-neutral-400")
                   }
                 >
-                  {ev.label}
+                  {Number(dateIso.slice(8, 10))}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* All-day banner row (holidays) */}
+        {hasAllDay && (
+          <div className="grid grid-cols-[3.5rem_repeat(7,1fr)] border-b border-neutral-200 dark:border-neutral-800">
+            <div className="py-1 pr-2 text-right text-[10px] text-neutral-400 dark:text-neutral-500">
+              all day
+            </div>
+            {days.map((dateIso) => (
+              <div
+                key={dateIso}
+                className="border-l border-neutral-100 p-1 dark:border-neutral-800/60"
+              >
+                {(events[dateIso] ?? [])
+                  .filter((ev) => !ev.start || !ev.end)
+                  .map((ev, j) => (
+                    <span
+                      key={j}
+                      title={ev.label}
+                      className={
+                        "block truncate rounded px-1.5 py-0.5 text-[10px] leading-snug " +
+                        chipClass[ev.type]
+                      }
+                    >
+                      {ev.label}
+                    </span>
+                  ))}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* 24-hour time grid */}
+        <div ref={scrollRef} className="max-h-[560px] overflow-y-auto">
+          <div
+            className="grid grid-cols-[3.5rem_repeat(7,1fr)]"
+            style={{ height: 24 * HOUR_HEIGHT }}
+          >
+            {/* Hour gutter */}
+            <div className="relative">
+              {Array.from({ length: 24 }, (_, h) => (
+                <span
+                  key={h}
+                  className="absolute right-2 -translate-y-1/2 text-[10px] text-neutral-400 dark:text-neutral-500"
+                  style={{ top: h * HOUR_HEIGHT }}
+                >
+                  {h === 0 ? "" : hourLabel(h)}
                 </span>
               ))}
             </div>
+
+            {days.map((dateIso) => {
+              const timed = (events[dateIso] ?? []).filter(
+                (ev): ev is TimedEvent => Boolean(ev.start && ev.end)
+              );
+              const { placed, lanes } = layoutDay(timed);
+              const isToday = dateIso === todayIso;
+              return (
+                <div
+                  key={dateIso}
+                  className={
+                    "relative border-l border-neutral-100 dark:border-neutral-800/60 " +
+                    (isToday ? "bg-penn-red-50/40 dark:bg-penn-red-900/10" : "")
+                  }
+                >
+                  {/* Hour lines */}
+                  {Array.from({ length: 23 }, (_, h) => (
+                    <div
+                      key={h}
+                      className="absolute inset-x-0 border-t border-neutral-100 dark:border-neutral-800/60"
+                      style={{ top: (h + 1) * HOUR_HEIGHT }}
+                    />
+                  ))}
+
+                  {/* Current time indicator */}
+                  {isToday && (
+                    <div
+                      className="absolute inset-x-0 z-10 border-t-2 border-penn-red-600"
+                      style={{ top: (nowMinutes / 60) * HOUR_HEIGHT }}
+                    />
+                  )}
+
+                  {/* Events */}
+                  {placed.map(({ ev, start, end, lane }, j) => (
+                    <div
+                      key={j}
+                      title={`${ev.label} (${formatTimeRange(ev.start, ev.end)})`}
+                      className={
+                        "absolute overflow-hidden rounded border border-white/40 px-1.5 py-0.5 text-[11px] leading-snug dark:border-black/20 " +
+                        chipClass[ev.type]
+                      }
+                      style={{
+                        top: (start / 60) * HOUR_HEIGHT,
+                        height: Math.max(((end - start) / 60) * HOUR_HEIGHT, 18),
+                        left: `${(lane / lanes) * 100}%`,
+                        width: `${100 / lanes}%`,
+                      }}
+                    >
+                      <span className="font-medium">{ev.label}</span>
+                      <span className="block text-[10px] opacity-75">
+                        {formatTimeRange(ev.start, ev.end)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      </div>
     </div>
   );
+}
+
+function formatTime12(time: string): string {
+  const [h, m] = time.split(":").map(Number);
+  const suffix = h >= 12 ? "pm" : "am";
+  const hour12 = h % 12 === 0 ? 12 : h % 12;
+  return m === 0 ? `${hour12}${suffix}` : `${hour12}:${pad(m)}${suffix}`;
+}
+
+function formatTimeRange(start: string, end: string): string {
+  return `${formatTime12(start)} to ${formatTime12(end)}`;
 }
