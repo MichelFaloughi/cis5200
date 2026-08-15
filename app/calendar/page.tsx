@@ -104,28 +104,19 @@ export default function CalendarPage() {
 
   return (
     <div className="mx-auto max-w-content px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
-      <PageHeader
-        eyebrow="Calendar"
-        title="Course Calendar"
-        description="All lectures and TA office hours in one calendar you can add to your own. Subscribe once and any schedule changes will show up automatically."
-      />
+      <PageHeader eyebrow="Calendar" title="Course Calendar" />
 
-      <section aria-label="Subscribe">
-        <CalendarSubscribe />
-        <p className="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
-          Subscribing keeps you in sync with schedule changes. The downloaded
-          file is a one-time snapshot. In Google Calendar you can also go to
-          Other calendars, then From URL, and paste the .ics link.
-        </p>
-      </section>
-
-      <section aria-label="Calendar preview" className="mt-10">
+      <section aria-label="Calendar preview">
         <CalendarPreview
           months={months}
           events={events}
           weekOneMonday={config.semester.weekOneMonday}
           lastDay={config.semester.lastDay}
         />
+      </section>
+
+      <section aria-label="Subscribe" className="mt-6">
+        <CalendarSubscribe />
       </section>
 
       <section aria-labelledby="lectures-heading" className="mt-10">
