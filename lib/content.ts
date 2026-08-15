@@ -80,6 +80,7 @@ export type StaffMember = {
   photo?: string;
   linkedin?: string;
   website?: string;
+  calendly?: string;
   bio?: string;
 };
 

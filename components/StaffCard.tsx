@@ -35,8 +35,8 @@ function LinkIcon({ href, label, path }: { href: string; label: string; path: st
 
 const linkedinPath =
   "M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.48a1.56 1.56 0 1 0 0-3.12 1.56 1.56 0 0 0 0 3.12zm11.34 9.86v-4.7c0-2.52-1.34-3.69-3.13-3.69-1.44 0-2.09.79-2.45 1.35v-1.55h-2.67c.04.75 0 8.59 0 8.59h2.67v-4.8c0-.26.02-.51.1-.7.2-.51.66-1.04 1.43-1.04 1.01 0 1.41.77 1.41 1.9v4.64h2.64z";
-const globePath =
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.93 9h-3.45a15.6 15.6 0 0 0-1.2-5.51A8.03 8.03 0 0 1 19.93 11zM12 4.06c.9 1.2 1.9 3.55 2.16 6.94H9.84c.26-3.39 1.26-5.74 2.16-6.94zM4.07 13h3.45c.13 2.09.55 3.98 1.2 5.51A8.03 8.03 0 0 1 4.07 13zm3.45-2H4.07a8.03 8.03 0 0 1 4.65-5.51A15.6 15.6 0 0 0 7.52 11zm4.48 8.94c-.9-1.2-1.9-3.55-2.16-6.94h4.32c-.26 3.39-1.26 5.74-2.16 6.94zm2.28-1.43c.65-1.53 1.07-3.42 1.2-5.51h3.45a8.03 8.03 0 0 1-4.65 5.51z";
+const calendarPath =
+  "M8 2a1 1 0 0 1 1 1v1h6V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1zm11 8H5v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8zM8 13a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z";
 
 export default function StaffCard({ member }: { member: StaffMember }) {
   return (
@@ -57,14 +57,25 @@ export default function StaffCard({ member }: { member: StaffMember }) {
       <div className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-            {member.name}
+            {member.website ? (
+              <a
+                href={member.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-2 hover:text-penn-red-600 hover:underline dark:hover:text-penn-red-400"
+              >
+                {member.name}
+              </a>
+            ) : (
+              member.name
+            )}
           </h3>
           <div className="flex items-center gap-2">
             {member.linkedin && (
               <LinkIcon href={member.linkedin} label={`${member.name} on LinkedIn`} path={linkedinPath} />
             )}
-            {member.website && (
-              <LinkIcon href={member.website} label={`${member.name}'s website`} path={globePath} />
+            {member.calendly && (
+              <LinkIcon href={member.calendly} label={`Book time with ${member.name}`} path={calendarPath} />
             )}
           </div>
         </div>
