@@ -18,10 +18,10 @@ export default function ComingSoonPage() {
       <p className="mt-10 text-sm text-neutral-500 dark:text-neutral-500">
         Questions? Write to the course staff at{" "}
         <a
-          href="mailto:cis5200-staff@seas.upenn.edu"
+          href="mailto:cis5200-staff@engineering.upenn.edu"
           className="font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
         >
-          cis5200-staff@seas.upenn.edu
+          cis5200-staff@engineering.upenn.edu
         </a>
       </p>
     </main>
