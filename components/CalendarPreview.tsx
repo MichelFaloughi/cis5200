@@ -8,6 +8,7 @@ export type PreviewEvent = {
   // 24h "HH:MM" local times; events without times render as all-day.
   start?: string;
   end?: string;
+  location?: string;
 };
 
 const MONTH_NAMES = [
@@ -460,7 +461,10 @@ function WeekGrid({
                   {placed.map(({ ev, start, end, lane }, j) => (
                     <div
                       key={j}
-                      title={`${ev.label} (${formatTimeRange(ev.start, ev.end)})`}
+                      title={
+                        `${ev.label} (${formatTimeRange(ev.start, ev.end)})` +
+                        (ev.location ? `, ${ev.location}` : "")
+                      }
                       className={
                         "absolute overflow-hidden rounded border border-white/40 px-1.5 py-0.5 text-[11px] leading-snug dark:border-black/20 " +
                         chipClass[ev.type]
@@ -476,6 +480,11 @@ function WeekGrid({
                       <span className="block text-[10px] opacity-75">
                         {formatTimeRange(ev.start, ev.end)}
                       </span>
+                      {ev.location && (
+                        <span className="block truncate text-[10px] opacity-75">
+                          {ev.location}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -64,6 +64,7 @@ function buildPreviewData() {
         type: "lecture",
         start: semester.lectureStartTime,
         end: semester.lectureEndTime,
+        location: semester.location,
       });
     }
   }
@@ -79,6 +80,7 @@ function buildPreviewData() {
         type: "oh",
         start: oh.start,
         end: oh.end,
+        location: oh.location,
       });
     }
   }
