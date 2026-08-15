@@ -205,7 +205,7 @@ function LectureCell({ lecture }: { lecture: Lecture }) {
 
 function RecitationCell({ recitation }: { recitation?: Recitation }) {
   if (!recitation) {
-    return <span className="text-neutral-400 dark:text-neutral-600">—</span>;
+    return <span className="text-neutral-400 dark:text-neutral-600">–</span>;
   }
   return (
     <div className="flex flex-col gap-1">
@@ -221,7 +221,7 @@ function RecitationCell({ recitation }: { recitation?: Recitation }) {
 
 function HomeworkCell({ items }: { items: Homework[] }) {
   if (items.length === 0) {
-    return <span className="text-neutral-400 dark:text-neutral-600">—</span>;
+    return <span className="text-neutral-400 dark:text-neutral-600">–</span>;
   }
   return (
     <ul className="flex flex-col gap-2">
@@ -250,7 +250,7 @@ function HomeworkCell({ items }: { items: Homework[] }) {
 
 function ExamCell({ items }: { items: Exam[] }) {
   if (items.length === 0) {
-    return <span className="text-neutral-400 dark:text-neutral-600">—</span>;
+    return <span className="text-neutral-400 dark:text-neutral-600">–</span>;
   }
   return (
     <ul className="flex flex-col gap-2">

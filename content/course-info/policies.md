@@ -1,6 +1,6 @@
 ---
 title: Policies
-description: The expectations and norms that govern this course. Please read carefully — registering for the course means you agree to follow them.
+description: The expectations and norms that govern this course. Please read carefully; registering for the course means you agree to follow them.
 ---
 
 ## Attendance & Participation

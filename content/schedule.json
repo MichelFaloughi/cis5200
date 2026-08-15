@@ -3,7 +3,7 @@
     { "date": "2026-08-26", "topic": "Course Introduction & ML Foundations", "slides": "#", "notes": "#" },
     { "date": "2026-08-31", "topic": "Linear Regression & Least Squares", "slides": "#", "notes": "#" },
     { "date": "2026-09-02", "topic": "Probabilistic Models & MLE", "slides": "#", "notes": "#" },
-    { "date": "2026-09-07", "topic": "Labor Day — No Class", "isHoliday": true },
+    { "date": "2026-09-07", "topic": "Labor Day (No Class)", "isHoliday": true },
     { "date": "2026-09-09", "topic": "Logistic Regression & Classification", "slides": "#", "notes": "#" },
     { "date": "2026-09-14", "topic": "Gradient Descent & Optimization", "slides": "#", "notes": "#" },
     { "date": "2026-09-16", "topic": "Regularization & Bias–Variance", "slides": "#", "notes": "#" },
@@ -26,7 +26,7 @@
     { "date": "2026-11-16", "topic": "Reinforcement Learning Foundations", "slides": "#", "notes": "#" },
     { "date": "2026-11-18", "topic": "Policy Gradient Methods", "slides": "#", "notes": "#" },
     { "date": "2026-11-23", "topic": "Fairness & Interpretability", "slides": "#", "notes": "#" },
-    { "date": "2026-11-25", "topic": "Thanksgiving Break — No Class", "isHoliday": true },
+    { "date": "2026-11-25", "topic": "Thanksgiving Break (No Class)", "isHoliday": true },
     { "date": "2026-11-30", "topic": "Special Topics in ML", "slides": "#", "notes": "#" },
     { "date": "2026-12-02", "topic": "Final Review I", "slides": "#", "notes": "#" },
     { "date": "2026-12-07", "topic": "Final Review II", "slides": "#", "notes": "#" }
@@ -60,6 +60,6 @@
   ],
   "exams": [
     { "name": "Midterm Exam", "week": 8, "dateLabel": "Wed Oct 14", "href": "#" },
-    { "name": "Final Exam", "week": 16, "dateLabel": "Finals Week — TBD", "href": "#" }
+    { "name": "Final Exam", "week": 16, "dateLabel": "Finals Week (TBD)", "href": "#" }
   ]
 }

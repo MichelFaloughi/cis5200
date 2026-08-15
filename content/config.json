@@ -8,14 +8,14 @@
   "semester": {
     "label": "Fall 2026",
     "meetingTime": "Mon/Wed 1:45-3:14pm",
-    "location": "Wu & Chen Auditorium, Levine Hall",
+    "location": "Leidy Laboratories 10",
     "weekOneMonday": "2026-08-24",
     "lastDay": "2026-12-07"
   },
   "instructor": {
-    "name": "Jake Cohen",
+    "name": "Jake Gardner",
     "email": "jcohen@seas.upenn.edu",
-    "office": "Levine Hall 503",
+    "office": "Amy Gutmann Hall, 608B",
     "officeHours": "Wed 3:00-4:00pm"
   },
   "tas": [

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-content gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <p className="text-sm font-semibold text-penn-blue-600 dark:text-white">
-            {config.course.code} — {config.course.title}
+            {config.course.code}: {config.course.title}
           </p>
           <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
             University of Pennsylvania

@@ -15,7 +15,7 @@ const config = getConfig();
 
 export const metadata: Metadata = {
   title: {
-    default: `${config.course.code} — ${config.course.title}`,
+    default: `${config.course.code}: ${config.course.title}`,
     template: `%s | ${config.course.code}`,
   },
   description: config.course.tagline,

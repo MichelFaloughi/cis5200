@@ -7,8 +7,8 @@ description: CIS 5200 covers the foundations of supervised and unsupervised lear
 
 | | |
 |---|---|
-| **Instructor** | Jake Cohen · Levine Hall 503 |
-| **Lecture** | Mon/Wed 1:45–3:14pm · Wu & Chen Auditorium, Levine Hall |
+| **Instructor** | Jake Gardner · Amy Gutmann Hall, 608B |
+| **Lecture** | Mon/Wed 1:45–3:14pm · Leidy Laboratories 10 |
 | **Office Hours** | Wed 3:00–4:00pm |
 | **Email** | jcohen@seas.upenn.edu |
 
@@ -35,6 +35,6 @@ description: CIS 5200 covers the foundations of supervised and unsupervised lear
 
 No single textbook is required. The following are useful references:
 
-- *Pattern Recognition and Machine Learning* — Bishop
-- *The Elements of Statistical Learning* — Hastie, Tibshirani, Friedman
-- *Deep Learning* — Goodfellow, Bengio, Courville
+- *Pattern Recognition and Machine Learning* by Bishop
+- *The Elements of Statistical Learning* by Hastie, Tibshirani, Friedman
+- *Deep Learning* by Goodfellow, Bengio, Courville
