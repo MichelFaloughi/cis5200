@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Shell from "@/components/Shell";
 import Footer from "@/components/Footer";
 import { getConfig } from "@/lib/content";
@@ -50,6 +51,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Shell footer={<Footer />}>{children}</Shell>
+        <Analytics />
       </body>
     </html>
   );
