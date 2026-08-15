@@ -1,6 +1,7 @@
 import configJson from "@/content/config.json";
 import announcementsJson from "@/content/announcements.json";
 import scheduleJson from "@/content/schedule.json";
+import staffJson from "@/content/staff.json";
 
 export type CourseConfig = {
   course: {
@@ -72,6 +73,25 @@ export type Schedule = {
   homeworks: Homework[];
   exams: Exam[];
 };
+
+export type StaffMember = {
+  name: string;
+  email?: string;
+  photo?: string;
+  linkedin?: string;
+  website?: string;
+  bio?: string;
+};
+
+export type Staff = {
+  instructor: StaffMember[];
+  headTas: StaffMember[];
+  tas: StaffMember[];
+};
+
+export function getStaff(): Staff {
+  return staffJson as Staff;
+}
 
 export function getConfig(): CourseConfig {
   return configJson as CourseConfig;
