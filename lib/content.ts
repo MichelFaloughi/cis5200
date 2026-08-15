@@ -77,6 +77,8 @@ export type Schedule = {
 export type StaffMember = {
   name: string;
   email?: string;
+  major?: string;
+  year?: string;
   photo?: string;
   linkedin?: string;
   website?: string;

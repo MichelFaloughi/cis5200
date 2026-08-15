@@ -28,7 +28,7 @@ Content (data) is strictly separated from rendering (code):
   - `schedule.json`: `lectures`, `recitations`, `homeworks`, `exams` arrays.
   - `announcements.json`: `{date, title, body, pinned?}` list.
   - `staff.json`: `instructor`/`headTas`/`tas` arrays of
-    `{name, email?, photo?, linkedin?, website?, calendly?, bio?}`. Headshots live in
+    `{name, email?, major?, year?, photo?, linkedin?, website?, calendly?, bio?}`. Headshots live in
     `public/headshots/` (checked into the repo; no external storage) and
     `photo` is their public path, e.g. `/headshots/jane-doe.jpg`.
   - `course-info/*.md`: long-form pages (syllabus, grading, policies) with

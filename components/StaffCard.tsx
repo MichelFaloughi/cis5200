@@ -79,6 +79,13 @@ export default function StaffCard({ member }: { member: StaffMember }) {
             )}
           </div>
         </div>
+        {(member.major || member.year) && (
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
+            {[member.major, member.year && `Class of ${member.year}`]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        )}
         {member.email && (
           <a
             href={`mailto:${member.email}`}
