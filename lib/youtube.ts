@@ -24,9 +24,10 @@ export async function getPlaylistVideos(
   playlistId: string
 ): Promise<PlaylistVideo[]> {
   try {
+    // Revalidate hourly so newly published videos appear without a redeploy.
     const res = await fetch(
       `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`,
-      { next: { revalidate: false } }
+      { next: { revalidate: 3600 } }
     );
     if (!res.ok) return [];
     const xml = await res.text();
