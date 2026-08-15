@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export type PreviewEvent = {
   label: string;
@@ -289,7 +289,12 @@ function MonthGrid({
   );
 }
 
-const HOUR_HEIGHT = 44; // px per hour; full day = 24 * HOUR_HEIGHT
+const HOUR_HEIGHT = 44; // px per hour
+// Visible day window: 7am to 11pm. Nothing on the course calendar
+// happens outside it, and a full 24h grid is mostly empty space.
+const DAY_START_HOUR = 7;
+const DAY_END_HOUR = 23;
+const VISIBLE_HOURS = DAY_END_HOUR - DAY_START_HOUR;
 
 function minutesOf(time: string): number {
   const [h, m] = time.split(":").map(Number);
@@ -336,12 +341,6 @@ function WeekGrid({
   events: Record<string, PreviewEvent[]>;
   todayIso: string;
 }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    // Open scrolled to 9am rather than midnight.
-    if (scrollRef.current) scrollRef.current.scrollTop = 9 * HOUR_HEIGHT;
-  }, []);
-
   const days = Array.from({ length: 7 }, (_, i) => addDays(startSunday, i));
   const hasAllDay = days.some((d) =>
     (events[d] ?? []).some((ev) => !ev.start || !ev.end)
@@ -407,21 +406,21 @@ function WeekGrid({
           </div>
         )}
 
-        {/* 24-hour time grid */}
-        <div ref={scrollRef} className="max-h-[560px] overflow-y-auto">
+        {/* Time grid, 7am to 11pm */}
+        <div>
           <div
             className="grid grid-cols-[3.5rem_repeat(7,1fr)]"
-            style={{ height: 24 * HOUR_HEIGHT }}
+            style={{ height: VISIBLE_HOURS * HOUR_HEIGHT }}
           >
             {/* Hour gutter */}
             <div className="relative">
-              {Array.from({ length: 24 }, (_, h) => (
+              {Array.from({ length: VISIBLE_HOURS - 1 }, (_, i) => (
                 <span
-                  key={h}
+                  key={i}
                   className="absolute right-2 -translate-y-1/2 text-[10px] text-neutral-400 dark:text-neutral-500"
-                  style={{ top: h * HOUR_HEIGHT }}
+                  style={{ top: (i + 1) * HOUR_HEIGHT }}
                 >
-                  {h === 0 ? "" : hourLabel(h)}
+                  {hourLabel(DAY_START_HOUR + i + 1)}
                 </span>
               ))}
             </div>
@@ -441,7 +440,7 @@ function WeekGrid({
                   }
                 >
                   {/* Hour lines */}
-                  {Array.from({ length: 23 }, (_, h) => (
+                  {Array.from({ length: VISIBLE_HOURS - 1 }, (_, h) => (
                     <div
                       key={h}
                       className="absolute inset-x-0 border-t border-neutral-100 dark:border-neutral-800/60"
@@ -450,15 +449,25 @@ function WeekGrid({
                   ))}
 
                   {/* Current time indicator */}
-                  {isToday && (
-                    <div
-                      className="absolute inset-x-0 z-10 border-t-2 border-penn-red-600"
-                      style={{ top: (nowMinutes / 60) * HOUR_HEIGHT }}
-                    />
-                  )}
+                  {isToday &&
+                    nowMinutes >= DAY_START_HOUR * 60 &&
+                    nowMinutes <= DAY_END_HOUR * 60 && (
+                      <div
+                        className="absolute inset-x-0 z-10 border-t-2 border-penn-red-600"
+                        style={{
+                          top:
+                            ((nowMinutes - DAY_START_HOUR * 60) / 60) *
+                            HOUR_HEIGHT,
+                        }}
+                      />
+                    )}
 
                   {/* Events */}
-                  {placed.map(({ ev, start, end, lane }, j) => (
+                  {placed.map(({ ev, start, end, lane }, j) => {
+                    const clampedStart = Math.max(start, DAY_START_HOUR * 60);
+                    const clampedEnd = Math.min(end, DAY_END_HOUR * 60);
+                    if (clampedEnd <= clampedStart) return null;
+                    return (
                     <div
                       key={j}
                       title={
@@ -470,8 +479,13 @@ function WeekGrid({
                         chipClass[ev.type]
                       }
                       style={{
-                        top: (start / 60) * HOUR_HEIGHT,
-                        height: Math.max(((end - start) / 60) * HOUR_HEIGHT, 18),
+                        top:
+                          ((clampedStart - DAY_START_HOUR * 60) / 60) *
+                          HOUR_HEIGHT,
+                        height: Math.max(
+                          ((clampedEnd - clampedStart) / 60) * HOUR_HEIGHT,
+                          18
+                        ),
                         left: `${(lane / lanes) * 100}%`,
                         width: `${100 / lanes}%`,
                       }}
@@ -486,7 +500,8 @@ function WeekGrid({
                         </span>
                       )}
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               );
             })}
