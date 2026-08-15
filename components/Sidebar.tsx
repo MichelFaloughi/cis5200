@@ -21,6 +21,7 @@ const navLinks: NavItem[] = [
         label: "Similar Courses at Penn",
         href: "/course-info/similar-courses",
       },
+      { label: "FAQ", href: "/course-info/faq" },
     ],
   },
   { label: "Staff", href: "/staff" },
