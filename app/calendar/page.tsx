@@ -107,7 +107,12 @@ export default function CalendarPage() {
       </section>
 
       <section aria-label="Calendar preview" className="mt-10">
-        <CalendarPreview months={months} events={events} />
+        <CalendarPreview
+          months={months}
+          events={events}
+          weekOneMonday={config.semester.weekOneMonday}
+          lastDay={config.semester.lastDay}
+        />
       </section>
 
       <section aria-labelledby="lectures-heading" className="mt-10">
