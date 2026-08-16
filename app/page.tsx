@@ -15,7 +15,7 @@ export default function ComingSoonPage() {
         The course website is being built and will be live before the
         semester starts. Check back soon!
       </p>
-      <p className="mt-10 text-sm text-neutral-500 dark:text-neutral-500">
+      {/* <p className="mt-10 text-sm text-neutral-500 dark:text-neutral-500">
         Questions? Write to the course staff at{" "}
         <a
           href="mailto:cis5200-staff@engineering.upenn.edu"
@@ -23,7 +23,7 @@ export default function ComingSoonPage() {
         >
           cis5200-staff@engineering.upenn.edu
         </a>
-      </p>
+      </p> */}
     </main>
   );
 }
