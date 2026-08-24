@@ -47,7 +47,7 @@ function addDays(dateIso: string, days: number): string {
 
 function buildPreviewData() {
   const { semester } = getConfig();
-  const { lectures } = getSchedule();
+  const { lectures, exams } = getSchedule();
   const officeHours = getOfficeHours();
 
   const events: Record<string, PreviewEvent[]> = {};
@@ -67,6 +67,12 @@ function buildPreviewData() {
         location: semester.location,
       });
     }
+  }
+
+  // Exams have no fixed time yet, so they render in the all-day row.
+  for (const exam of exams) {
+    if (!exam.date) continue;
+    push(exam.date, { label: exam.name, type: "exam" });
   }
 
   for (const oh of officeHours) {
@@ -167,6 +173,9 @@ export default function CalendarPage() {
                   <th className="px-4 py-2 font-semibold text-neutral-700 dark:text-neutral-300">
                     Location
                   </th>
+                  <th className="px-4 py-2 font-semibold text-neutral-700 dark:text-neutral-300">
+                    Zoom
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -188,6 +197,20 @@ export default function CalendarPage() {
                     </td>
                     <td className="px-4 py-2 text-neutral-700 dark:text-neutral-300">
                       {oh.location}
+                    </td>
+                    <td className="px-4 py-2">
+                      {oh.zoom ? (
+                        <a
+                          href={oh.zoom}
+                          className="font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
+                        >
+                          Join
+                        </a>
+                      ) : (
+                        <span className="text-neutral-400 dark:text-neutral-600">
+                          &ndash;
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

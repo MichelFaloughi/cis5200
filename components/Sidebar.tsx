@@ -16,8 +16,9 @@ const navLinks: NavItem[] = [
     label: "Course Info",
     children: [
       { label: "Syllabus", href: "/course-info/syllabus" },
-      { label: "Policies", href: "/course-info/policies" },
+      { label: "Assessments", href: "/course-info/assessments" },
       { label: "Grading", href: "/course-info/grading" },
+      { label: "Policies", href: "/course-info/policies" },
       {
         label: "Similar Courses at Penn",
         href: "/course-info/similar-courses",
@@ -34,6 +35,7 @@ const navLinks: NavItem[] = [
       { label: "External Resources", href: "/resources/external-resources" },
     ],
   },
+  { label: "Spin da Wheel", href: "/spin-da-wheel" },
 ];
 
 function isLeaf(item: NavItem): item is NavLeaf {

@@ -32,13 +32,16 @@ Content (data) is strictly separated from rendering (code):
     `public/headshots/` (checked into the repo; no external storage) and
     `photo` is their public path, e.g. `/headshots/jane-doe.jpg`.
   - `office-hours.json`: array of
-    `{name, weekday: "MO".."SU", start: "HH:MM", end: "HH:MM", location}`
-    (24h local times). Feeds the Calendar page and the .ics feed.
+    `{name, weekday: "MO".."SU", start: "HH:MM", end: "HH:MM", location, zoom?}`
+    (24h local times; `zoom` is the meeting link shown as "Join" in the
+    Calendar table). Feeds the Calendar page and the .ics feed.
   - `course-info/*.md` and `resources/*.md`: long-form pages with
     `title`/`description` frontmatter.
 - `lib/ics.ts` + `app/calendar.ics/route.ts`: statically generated
-  iCalendar feed (lectures + weekly office hours, America/New_York) that
-  students subscribe to from the Calendar page. No Google API involved.
+  iCalendar feed (lectures + weekly office hours, America/New_York, plus
+  exams as all-day events) that students subscribe to from the Calendar
+  page. No Google API involved. Exams need an ISO `date` in
+  `schedule.json` to appear; `dateLabel` alone only drives the table.
 - `lib/content.ts`: typed getters over the JSON (`getConfig`,
   `getSchedule`, `getAnnouncements`) plus week math (`getWeekNumber`,
   `getCurrentWeek`). The exported types are the de facto schema for the
@@ -67,8 +70,19 @@ Content (data) is strictly separated from rendering (code):
   (ISR revalidate or client-side computation).
 - Dark mode is class-based Tailwind (`dark:` variants); every new
   component needs both light and dark styles.
+- `BRAND.md` documents the visual identity: logo rules, the Penn
+  red/blue scales, the type scale, component class recipes, and the
+  slide/handout/LaTeX equivalents. Read it before adding UI.
 - Many links in `config.json`/`schedule.json` are `"#"` placeholders
   until the semester starts.
+- Some headings are intentionally empty and are **not** bugs to fill in:
+  the `## Regrade Requests` section in `course-info/grading.md` and most
+  `###` questions in `course-info/faq.md` are open questions awaiting an
+  answer from the instructor. Do not invent content for them.
+- Course facts (grade weights, late-day counts, AI and collaboration
+  rules, recording policy) come from the instructor's course document.
+  Do not fabricate them; if a number is unknown, write TBA. An exam with
+  no known date omits `date` so it stays out of the calendar feed.
 
 ## Branches & deployment
 
@@ -80,7 +94,10 @@ Content (data) is strictly separated from rendering (code):
 ## Roadmap
 
 - Fill in real Ed/Canvas/Gradescope/slides links before Aug 24 (week 1).
-- Confirm the tentative Fall 2026 schedule dates with Prof. Gardner.
+- Confirm the tentative Fall 2026 schedule dates with Prof. Gardner,
+  including the midterm date and the final exam slot (currently TBA).
+- Ask Prof. Gardner for the regrade policy and the oral assessment
+  format; both are stubbed on the site.
 - Point cis5200.com back at `main` once content is verified.
 - Add a git-based CMS (likely Keystatic) later so TAs can edit `content/`
   through a UI; no architectural changes expected.

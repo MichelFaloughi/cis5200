@@ -192,10 +192,12 @@ function LectureCell({ lecture }: { lecture: Lecture }) {
       <span className="font-medium text-neutral-900 dark:text-neutral-100">
         {lecture.topic}
       </span>
-      {(lecture.slides || lecture.notes) && (
+      {(lecture.recording || lecture.notes) && (
         <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-          {lecture.slides && <SubLink href={lecture.slides} label="Slides" />}
-          {lecture.slides && lecture.notes && <span aria-hidden>·</span>}
+          {lecture.recording && (
+            <SubLink href={lecture.recording} label="Recording" />
+          )}
+          {lecture.recording && lecture.notes && <span aria-hidden>·</span>}
           {lecture.notes && <SubLink href={lecture.notes} label="Notes" />}
         </div>
       )}
