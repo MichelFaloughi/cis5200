@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export type PreviewEvent = {
   label: string;
-  type: "lecture" | "oh" | "holiday";
+  type: "lecture" | "oh" | "exam" | "holiday";
   // 24h "HH:MM" local times; events without times render as all-day.
   start?: string;
   end?: string;
@@ -32,6 +32,8 @@ const chipClass: Record<PreviewEvent["type"], string> = {
   lecture:
     "bg-penn-blue-50 text-penn-blue-700 dark:bg-penn-blue-900/40 dark:text-penn-blue-100",
   oh: "bg-penn-red-50 text-penn-red-700 dark:bg-penn-red-900/40 dark:text-penn-red-200",
+  exam:
+    "bg-rose-600 font-semibold text-white dark:bg-rose-500 dark:text-white",
   holiday:
     "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400",
 };
@@ -289,7 +291,12 @@ function MonthGrid({
   );
 }
 
-const HOUR_HEIGHT = 44; // px per hour
+const HOUR_HEIGHT = 52; // px per hour; a 1-hour chip fits its three text lines
+// Chips render label / time / location. At text-[11px]/text-[10px] with
+// leading-snug each line costs ~14px, on top of 4px of vertical padding.
+const TEXT_LINE_HEIGHT = 14;
+const CHIP_PADDING = 4;
+const MAX_LABEL_LINES = 3;
 // Visible day window: 7am to 11pm. Nothing on the course calendar
 // happens outside it, and a full 24h grid is mostly empty space.
 const DAY_START_HOUR = 7;
@@ -307,6 +314,15 @@ function hourLabel(h: number): string {
   if (h === 12) return "12pm";
   return `${h - 12}pm`;
 }
+
+// line-clamp-* brings its own display:-webkit-box. Do not pair it with
+// `block`: .block is emitted later in the stylesheet and would win, which
+// silently drops the clamp and lets long labels wrap out of the chip.
+const LABEL_CLAMP: Record<number, string> = {
+  1: "line-clamp-1",
+  2: "line-clamp-2",
+  3: "line-clamp-3",
+};
 
 type TimedEvent = PreviewEvent & { start: string; end: string };
 
@@ -467,6 +483,23 @@ function WeekGrid({
                     const clampedStart = Math.max(start, DAY_START_HOUR * 60);
                     const clampedEnd = Math.min(end, DAY_END_HOUR * 60);
                     if (clampedEnd <= clampedStart) return null;
+                    const height = Math.max(
+                      ((clampedEnd - clampedStart) / 60) * HOUR_HEIGHT,
+                      18
+                    );
+                    // Only render the lines that fit whole. Anything that would
+                    // spill past the chip is dropped rather than half-clipped;
+                    // the title attribute still carries the full detail.
+                    const lines = Math.max(
+                      1,
+                      Math.floor((height - CHIP_PADDING) / TEXT_LINE_HEIGHT)
+                    );
+                    const showTime = lines >= 2;
+                    const showLocation = Boolean(ev.location) && lines >= 3;
+                    const labelLines = Math.min(
+                      MAX_LABEL_LINES,
+                      lines - (showTime ? 1 : 0) - (showLocation ? 1 : 0)
+                    );
                     return (
                     <div
                       key={j}
@@ -482,19 +515,20 @@ function WeekGrid({
                         top:
                           ((clampedStart - DAY_START_HOUR * 60) / 60) *
                           HOUR_HEIGHT,
-                        height: Math.max(
-                          ((clampedEnd - clampedStart) / 60) * HOUR_HEIGHT,
-                          18
-                        ),
+                        height,
                         left: `${(lane / lanes) * 100}%`,
                         width: `${100 / lanes}%`,
                       }}
                     >
-                      <span className="font-medium">{ev.label}</span>
-                      <span className="block text-[10px] opacity-75">
-                        {formatTimeRange(ev.start, ev.end)}
+                      <span className={"font-medium " + LABEL_CLAMP[labelLines]}>
+                        {ev.label}
                       </span>
-                      {ev.location && (
+                      {showTime && (
+                        <span className="block truncate text-[10px] opacity-75">
+                          {formatTimeRange(ev.start, ev.end)}
+                        </span>
+                      )}
+                      {showLocation && (
                         <span className="block truncate text-[10px] opacity-75">
                           {ev.location}
                         </span>

@@ -48,7 +48,7 @@ export type Lecture = {
   date: string;
   topic: string;
   isHoliday?: boolean;
-  slides?: string;
+  recording?: string;
   notes?: string;
 };
 
@@ -67,6 +67,8 @@ export type Homework = {
 export type Exam = {
   name: string;
   week: number;
+  // ISO date the assessment falls on; drives the calendar feed and preview.
+  date?: string;
   dateLabel: string;
   href?: string;
 };
@@ -108,6 +110,7 @@ export type OfficeHour = {
   start: string;
   end: string;
   location: string;
+  zoom?: string;
 };
 
 export function getOfficeHours(): OfficeHour[] {

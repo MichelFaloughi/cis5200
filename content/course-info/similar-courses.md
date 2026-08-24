@@ -3,6 +3,13 @@ title: Similar Courses at Penn
 description: Other Penn courses that overlap with, lead into, or follow on from CIS 5200. Useful if you're planning your schedule or want to go deeper in a particular area.
 ---
 
+## CIS 3990: Mathematics of Machine Learning
+
+A new pilot offering at Penn covering the mathematical background CIS 5200
+assumes: multivariable calculus, linear algebra, and probability and statistics.
+Recommended if [Homework 0](/course-info/assessments) suggests you would benefit
+from shoring up the fundamentals before or alongside this course.
+
 ## CIS 4190: Applied Machine Learning
 
 A more applied, less theoretical introduction to ML. Heavier focus on tooling and end-to-end pipelines. Good alternative if you want practice over proofs.

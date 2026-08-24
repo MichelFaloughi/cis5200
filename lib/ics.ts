@@ -67,7 +67,7 @@ function event(lines: Array<string | false | undefined>): string[] {
 
 export function buildCalendarIcs(): string {
   const config = getConfig();
-  const { lectures } = getSchedule();
+  const { lectures, exams } = getSchedule();
   const officeHours = getOfficeHours();
   const { lectureStartTime, lectureEndTime, location, weekOneMonday, lastDay } =
     config.semester;
@@ -99,6 +99,21 @@ export function buildCalendarIcs(): string {
     );
   }
 
+  // Exams have no fixed start time yet, so they publish as all-day events.
+  // DTEND on an all-day VEVENT is exclusive, hence the +1 day.
+  for (const exam of exams) {
+    if (!exam.date) continue;
+    lines.push(
+      ...event([
+        `UID:exam-${exam.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}@cis5200.com`,
+        `DTSTAMP:${dtstamp}`,
+        `DTSTART;VALUE=DATE:${exam.date.replace(/-/g, "")}`,
+        `DTEND;VALUE=DATE:${addDays(exam.date, 1).replace(/-/g, "")}`,
+        `SUMMARY:${escapeText(`${config.course.code} ${exam.name}`)}`,
+      ])
+    );
+  }
+
   for (const oh of officeHours) {
     const firstDate = addDays(weekOneMonday, WEEKDAY_OFFSET[oh.weekday]);
     // UNTIL must be UTC; end of the last day in EST is safely covered by 23:59Z + 1 day.
@@ -112,6 +127,8 @@ export function buildCalendarIcs(): string {
         `RRULE:FREQ=WEEKLY;BYDAY=${oh.weekday};UNTIL=${until}`,
         `SUMMARY:${escapeText(`${config.course.code} Office Hours: ${oh.name}`)}`,
         `LOCATION:${escapeText(oh.location)}`,
+        oh.zoom && `DESCRIPTION:${escapeText(`Zoom: ${oh.zoom}`)}`,
+        oh.zoom && `URL:${oh.zoom}`,
       ])
     );
   }
