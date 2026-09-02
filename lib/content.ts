@@ -166,7 +166,8 @@ export function getWeekNumber(date: string): number {
 
 export function getCurrentWeek(today: Date = new Date()): number | null {
   const { weekOneMonday, lastDay } = getConfig().semester;
-  const iso = today.toISOString().slice(0, 10);
+  // Campus-local date, so late evenings do not roll into the next week early.
+  const iso = today.toLocaleDateString("en-CA", { timeZone: "America/New_York" });
   if (iso < weekOneMonday) return null;
   if (iso > lastDay) return null;
   return Math.floor(daysBetween(weekOneMonday, iso) / 7) + 1;

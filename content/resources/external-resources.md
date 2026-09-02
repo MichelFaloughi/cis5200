@@ -14,5 +14,12 @@ description: Outside references for brushing up on the math and programming behi
 
 ## Reference Texts
 
-The recommended reading list is on the [Syllabus](/course-info/syllabus).
+There is no required textbook for CIS 5200. Readings and references are posted
+on Canvas alongside the lectures they accompany. These general texts are also
+useful companions:
+
+- [Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/) by Bishop (free PDF)
+- [The Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/) by Hastie, Tibshirani, and Friedman (free PDF)
+- [Deep Learning](https://www.deeplearningbook.org/) by Goodfellow, Bengio, and Courville (free online)
+
 More links will be added here during the semester.
