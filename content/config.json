@@ -3,7 +3,7 @@
     "code": "CIS 5200",
     "title": "Machine Learning",
     "tagline": "An introduction to the theory, algorithms, and practice of modern machine learning.",
-    "description": "CIS 5200 covers the foundations of supervised and unsupervised learning, from linear models and SVMs through neural networks, with a strong emphasis on the underlying mathematics and on building intuition through hands-on assignments."
+    "description": "CIS 5200 covers the foundations of supervised and some unsupervised learning, from linear models and SVMs through neural networks, with a strong emphasis on the underlying mathematics and on building intuition through hands-on assignments."
   },
   "semester": {
     "label": "Fall 2026",
