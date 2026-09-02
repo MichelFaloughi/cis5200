@@ -202,6 +202,8 @@ export default function CalendarPage() {
                       {oh.zoom ? (
                         <a
                           href={oh.zoom}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
                         >
                           Join

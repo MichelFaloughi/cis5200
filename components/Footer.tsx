@@ -27,6 +27,8 @@ export default function Footer() {
             <li>
               <a
                 href={config.links.ed}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
               >
                 Ed Discussion
@@ -35,6 +37,8 @@ export default function Footer() {
             <li>
               <a
                 href={config.links.canvas}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
               >
                 Canvas
@@ -43,6 +47,8 @@ export default function Footer() {
             <li>
               <a
                 href={config.links.gradescope}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
               >
                 Gradescope
@@ -51,6 +57,8 @@ export default function Footer() {
             <li>
               <a
                 href={config.links.panopto}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
               >
                 Panopto
@@ -67,6 +75,8 @@ export default function Footer() {
             <li>
               <a
                 href={config.links.weingarten}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
               >
                 Weingarten Learning Resources Center

@@ -187,6 +187,8 @@ function SubLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="text-xs font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
     >
       {label}
@@ -247,6 +249,8 @@ function HomeworkCell({ items }: { items: Homework[] }) {
           {isLive(hw.href) ? (
             <a
               href={hw.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
             >
               {hw.name}
@@ -276,6 +280,8 @@ function ExamCell({ items }: { items: Exam[] }) {
           {isLive(ex.href) ? (
             <a
               href={ex.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-penn-red-600 underline-offset-2 hover:underline dark:text-penn-red-300"
             >
               {ex.name}

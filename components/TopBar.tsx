@@ -93,24 +93,32 @@ export default function TopBar({
         >
           <a
             href={config.links.ed}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md px-3 py-2 text-sm font-medium text-penn-blue-600 transition-colors hover:bg-penn-blue-50 hover:text-penn-blue-700 dark:text-penn-blue-200 dark:hover:bg-penn-blue-900/30 dark:hover:text-white"
           >
             Ed
           </a>
           <a
             href={config.links.canvas}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md px-3 py-2 text-sm font-medium text-penn-blue-600 transition-colors hover:bg-penn-blue-50 hover:text-penn-blue-700 dark:text-penn-blue-200 dark:hover:bg-penn-blue-900/30 dark:hover:text-white"
           >
             Canvas
           </a>
           <a
             href={config.links.gradescope}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md px-3 py-2 text-sm font-medium text-penn-blue-600 transition-colors hover:bg-penn-blue-50 hover:text-penn-blue-700 dark:text-penn-blue-200 dark:hover:bg-penn-blue-900/30 dark:hover:text-white"
           >
             Gradescope
           </a>
           <a
             href={config.links.panopto}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md px-3 py-2 text-sm font-medium text-penn-blue-600 transition-colors hover:bg-penn-blue-50 hover:text-penn-blue-700 dark:text-penn-blue-200 dark:hover:bg-penn-blue-900/30 dark:hover:text-white"
           >
             Panopto
