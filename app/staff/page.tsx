@@ -36,8 +36,8 @@ export default function StaffPage() {
         description="The people running CIS 5200 this semester. Reach out on Ed first for course questions; email is best for personal matters."
       />
       <StaffSection title="Instructor" members={staff.instructor} />
-      <StaffSection title="Head Teaching Assistants" members={staff.headTas} />
-      <StaffSection title="Teaching Assistants" members={staff.tas} />
+      <StaffSection title="Head TAs" members={staff.headTas} />
+      <StaffSection title="TAs" members={staff.tas} />
     </div>
   );
 }
