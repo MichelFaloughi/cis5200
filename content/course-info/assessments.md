@@ -49,7 +49,7 @@ covered in class. There is no collaboration permitted on exams.
 ## Oral Assessments
 
 There are **two oral assessments**, worth 12.5% each, for 25% of your grade in
-total. They are currently scheduled for weeks 6 and 12; see the
+total. They are currently scheduled for weeks 8 and 12; see the
 [schedule](/) for dates.
 
 Format and logistics are still to be announced.
