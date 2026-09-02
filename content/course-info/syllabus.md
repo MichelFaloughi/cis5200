@@ -8,7 +8,7 @@ description: CIS 5200 covers the foundations of supervised and some unsupervised
 - Linear algebra (matrix operations, eigendecomposition)
 - Multivariable calculus (gradients, partial derivatives)
 - Probability & statistics (distributions, expectation, MLE)
-- Programming proficiency in Python; experience with NumPy
+- Programming proficiency in Python
 
 Not sure whether you meet these? [Homework 0](/course-info/assessments) is
 released in the second week and is designed to let you gauge exactly that. It is
