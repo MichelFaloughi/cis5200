@@ -168,7 +168,22 @@ export default function ScheduleTable({
   );
 }
 
+/** A link is "live" once content has a real URL; "#" is the placeholder. */
+function isLive(href?: string): href is string {
+  return Boolean(href) && href !== "#";
+}
+
 function SubLink({ href, label }: { href: string; label: string }) {
+  if (!isLive(href)) {
+    return (
+      <span
+        className="text-xs font-medium text-neutral-400 dark:text-neutral-600"
+        title="Not yet available"
+      >
+        {label}
+      </span>
+    );
+  }
   return (
     <a
       href={href}
@@ -229,7 +244,7 @@ function HomeworkCell({ items }: { items: Homework[] }) {
     <ul className="flex flex-col gap-2">
       {items.map((hw) => (
         <li key={hw.name} className="flex flex-col leading-tight">
-          {hw.href ? (
+          {isLive(hw.href) ? (
             <a
               href={hw.href}
               className="font-medium text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
@@ -258,7 +273,7 @@ function ExamCell({ items }: { items: Exam[] }) {
     <ul className="flex flex-col gap-2">
       {items.map((ex) => (
         <li key={ex.name} className="flex flex-col leading-tight">
-          {ex.href ? (
+          {isLive(ex.href) ? (
             <a
               href={ex.href}
               className="font-medium text-penn-red-600 underline-offset-2 hover:underline dark:text-penn-red-300"
