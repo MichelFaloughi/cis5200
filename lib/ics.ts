@@ -127,7 +127,7 @@ export function buildCalendarIcs(): string {
         `RRULE:FREQ=WEEKLY;BYDAY=${oh.weekday};UNTIL=${until}`,
         `SUMMARY:${escapeText(`${config.course.code} Office Hours: ${oh.name}`)}`,
         `LOCATION:${escapeText(oh.location)}`,
-        oh.zoom && `DESCRIPTION:${escapeText(`Zoom: ${oh.zoom}`)}`,
+        oh.zoom && `DESCRIPTION:${escapeText(`Join link: ${oh.zoom}`)}`,
         oh.zoom && `URL:${oh.zoom}`,
       ])
     );

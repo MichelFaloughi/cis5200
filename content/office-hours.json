@@ -1,146 +1,147 @@
 [
   {
-    "name": "Michel Faloughi",
+    "name": "Leo Zhang",
     "weekday": "MO",
-    "start": "09:30",
-    "end": "10:30",
-    "location": "Fisher-Bennett Hall 401",
-    "zoom": "https://upenn.zoom.us/j/74268589997"
+    "start": "17:00",
+    "end": "18:00",
+    "location": "Amy Gutmann Hall 300E"
   },
   {
-    "name": "Rhea Malik",
-    "weekday": "MO",
-    "start": "09:30",
-    "end": "10:30",
-    "location": "Houston Hall, Golkin Room",
-    "zoom": "https://upenn.zoom.us/j/24473751855"
-  },
-  {
-    "name": "Garrett Edward Lee",
-    "weekday": "MO",
-    "start": "16:30",
-    "end": "17:30",
-    "location": "Pennovation Center, Room 210",
-    "zoom": "https://upenn.zoom.us/j/80805652625"
-  },
-  {
-    "name": "Rachel Ma",
+    "name": "Hari Srinivasan",
     "weekday": "TU",
-    "start": "09:00",
-    "end": "10:00",
-    "location": "Towne Building 305",
-    "zoom": "https://upenn.zoom.us/j/27767589979"
-  },
-  {
-    "name": "Sam Huang",
-    "weekday": "TU",
-    "start": "13:30",
-    "end": "14:30",
-    "location": "Amy Gutmann Hall 414",
-    "zoom": "https://upenn.zoom.us/j/22994608571"
-  },
-  {
-    "name": "Zheng Xing",
-    "weekday": "TU",
-    "start": "14:30",
-    "end": "15:30",
-    "location": "Skirkanich Hall 2nd Floor Lounge",
-    "zoom": "https://upenn.zoom.us/j/57575638920"
-  },
-  {
-    "name": "Arjun",
-    "weekday": "WE",
-    "start": "11:30",
-    "end": "12:30",
-    "location": "Moore Building 212",
-    "zoom": "https://upenn.zoom.us/j/33757875980"
-  },
-  {
-    "name": "Josh Kim",
-    "weekday": "WE",
-    "start": "11:30",
-    "end": "12:30",
-    "location": "Levine Hall 512",
-    "zoom": "https://upenn.zoom.us/j/51580880251"
-  },
-  {
-    "name": "Avaneesh Parasnis",
-    "weekday": "WE",
-    "start": "12:30",
-    "end": "13:30",
-    "location": "Van Pelt Library, Room 113",
-    "zoom": "https://upenn.zoom.us/j/75122696564"
-  },
-  {
-    "name": "Mohit Shah",
-    "weekday": "WE",
     "start": "15:00",
-    "end": "16:00",
-    "location": "Moore Building 212",
-    "zoom": "https://upenn.zoom.us/j/43555141768"
-  },
-  {
-    "name": "Kevin Song",
-    "weekday": "TH",
-    "start": "10:00",
-    "end": "11:00",
-    "location": "Fisher-Bennett Hall 401",
-    "zoom": "https://upenn.zoom.us/j/41949389565"
+    "end": "17:00",
+    "location": "Amy Gutmann Hall 300E"
   },
   {
     "name": "Kevin Li",
-    "weekday": "TH",
-    "start": "13:00",
-    "end": "14:00",
-    "location": "Pennovation Center, Room 210",
-    "zoom": "https://upenn.zoom.us/j/34451977715"
-  },
-  {
-    "name": "Pedram Bayat",
-    "weekday": "TH",
+    "weekday": "TU",
     "start": "16:00",
     "end": "17:00",
-    "location": "Van Pelt Library, Room 113",
-    "zoom": "https://upenn.zoom.us/j/73496555108"
+    "location": "Online",
+    "zoom": "https://us04web.zoom.us/j/72225835650?pwd=FjZd27k1ordaeHUvT0uD7GzjwjHr10.1"
   },
   {
-    "name": "Leo Zhang",
+    "name": "Kevin Song",
+    "weekday": "MO",
+    "start": "15:30",
+    "end": "16:30",
+    "location": "Online",
+    "zoom": "https://upenn.zoom.us/j/91332865311?pwd=6SmR51jqq6PHJgsB5593DDWw8iIqQE.1"
+  },
+  {
+    "name": "Rhea Malik",
+    "weekday": "FR",
+    "start": "11:00",
+    "end": "12:00",
+    "location": "Amy Gutmann Hall 300E"
+  },
+  {
+    "name": "Garrett Edward Lee",
+    "weekday": "WE",
+    "start": "08:00",
+    "end": "09:00",
+    "location": "Amy Gutmann Hall, 2nd floor bump space"
+  },
+  {
+    "name": "Aadam Mulla",
+    "weekday": "MO",
+    "start": "16:00",
+    "end": "17:00",
+    "location": "Online",
+    "zoom": "https://upenn.zoom.us/j/9532390208"
+  },
+  {
+    "name": "Sam Huang",
     "weekday": "TH",
-    "start": "18:30",
-    "end": "19:30",
-    "location": "Houston Hall, Golkin Room",
-    "zoom": "https://upenn.zoom.us/j/12800168460"
+    "start": "14:00",
+    "end": "15:00",
+    "location": "Amy Gutmann Hall 633"
+  },
+  {
+    "name": "Rachel Ma",
+    "weekday": "FR",
+    "start": "12:00",
+    "end": "13:00",
+    "location": "Online",
+    "zoom": "https://us04web.zoom.us/j/71415378119?pwd=nz4YTT5nZik20LaYRKJ0rSa47cAUak.1"
+  },
+  {
+    "name": "Avaneesh Parasnis",
+    "weekday": "FR",
+    "start": "17:00",
+    "end": "18:00",
+    "location": "Online",
+    "zoom": "https://us04web.zoom.us/j/6929080828?pwd=foEAelurH5NOJuzdEDPZIDzaviZSJr.1"
+  },
+  {
+    "name": "Zheng Xing",
+    "weekday": "FR",
+    "start": "16:00",
+    "end": "17:00",
+    "location": "Online",
+    "zoom": "https://upenn.zoom.us/j/96144390632?pwd=gNPpT3xgEIkXZojozXZBoxVnw85Pb0.1"
   },
   {
     "name": "Jesus Roberto Tamez Villarreal",
     "weekday": "FR",
-    "start": "10:00",
-    "end": "11:00",
-    "location": "Levine Hall 512",
-    "zoom": "https://upenn.zoom.us/j/64331063097"
+    "start": "11:00",
+    "end": "12:00",
+    "location": "Amy Gutmann Hall 300E"
   },
   {
-    "name": "Aadam Mulla",
+    "name": "Michel Faloughi",
     "weekday": "FR",
-    "start": "15:30",
-    "end": "16:30",
-    "location": "Education Commons, Study Room 3",
-    "zoom": "https://upenn.zoom.us/j/71626875759"
+    "start": "13:00",
+    "end": "14:00",
+    "location": "Online",
+    "zoom": "https://meet.google.com/gfh-akzz-cqj"
   },
   {
-    "name": "Hari Srinivasan",
-    "weekday": "FR",
-    "start": "16:30",
-    "end": "17:30",
-    "location": "Amy Gutmann Hall 414",
-    "zoom": "https://upenn.zoom.us/j/85762545834"
+    "name": "Pedram Bayat",
+    "weekday": "TU",
+    "start": "11:30",
+    "end": "12:30",
+    "location": "Amy Gutmann Hall 300E"
+  },
+  {
+    "name": "Mohit Shah",
+    "weekday": "WE",
+    "start": "17:00",
+    "end": "18:00",
+    "location": "Online",
+    "zoom": "https://us04web.zoom.us/j/6397768335?pwd=g0IWrTxV2crnktR9wfPGwUqQhsQxbs.1"
   },
   {
     "name": "Madhav Sharma",
+    "weekday": "TH",
+    "start": "15:30",
+    "end": "16:30",
+    "location": "Online",
+    "zoom": "https://upenn.zoom.us/j/91850191130?pwd=RiqfA6hfxqNMoHrR0aWZWvkZDJOj9O.1"
+  },
+  {
+    "name": "Josh Kim",
+    "weekday": "WE",
+    "start": "15:30",
+    "end": "16:30",
+    "location": "TBD",
+    "zoom": "https://us04web.zoom.us/j/76150488780?pwd=W8TOr3oywik0S0wYWpY2oq5a05b8xI.1"
+  },
+  {
+    "name": "Eric Yule",
     "weekday": "FR",
-    "start": "18:30",
-    "end": "19:30",
-    "location": "Fisher-Bennett Hall 401",
-    "zoom": "https://upenn.zoom.us/j/52781693870"
+    "start": "11:00",
+    "end": "12:00",
+    "location": "Online",
+    "zoom": "https://us05web.zoom.us/j/88593230661?pwd=XwfFZZALpp3pJkilzgo8LeUpBiAVWG.1"
+  },
+  {
+    "name": "Sung Cho",
+    "weekday": "FR",
+    "start": "14:00",
+    "end": "15:00",
+    "location": "Online",
+    "zoom": "https://upenn.zoom.us/my/sungycho"
   }
 ]
