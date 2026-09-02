@@ -28,9 +28,9 @@
     }
   ],
   "links": {
-    "ed": "#",
-    "canvas": "#",
-    "gradescope": "#",
+    "ed": "https://edstem.org/us/courses/101785/",
+    "canvas": "https://canvas.upenn.edu/courses/1947654/",
+    "gradescope": "https://www.gradescope.com/courses/1369805",
     "officeHoursCalendar": "#",
     "weingarten": "https://www.vpul.upenn.edu/lrc/",
     "recitationPlaylist": "https://www.youtube.com/playlist?list=PL2lWy8o_RG-U5O6ODLj60zohcSKAN4VfR"
