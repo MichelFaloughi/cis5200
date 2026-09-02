@@ -86,10 +86,10 @@ Content (data) is strictly separated from rendering (code):
 
 ## Branches & deployment
 
-- `main`: active development.
-- `coming-soon`: minimal "coming soon" landing page. cis5200.com serves
-  this branch on Vercel until the real content is confirmed; do not
-  merge it into `main`.
+- `main`: active development and the Vercel production branch;
+  cis5200.com serves it (unpinned from `coming-soon` on 2026-09-02).
+- `coming-soon`: minimal "coming soon" landing page, kept for reference.
+  Do not merge it into `main`.
 
 ## Roadmap
 
