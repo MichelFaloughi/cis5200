@@ -89,6 +89,7 @@ export type StaffMember = {
   photo?: string;
   linkedin?: string;
   website?: string;
+  github?: string;
   calendly?: string;
   bio?: string;
 };
