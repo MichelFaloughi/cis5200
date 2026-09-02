@@ -43,8 +43,9 @@ encouraged, subject to the collaboration policy on that same page.
 
 ## Exams
 
-There is a **midterm** (25%) and a **final exam** in December (30%). See the
-[schedule](/) for dates as they are confirmed.
+There is a **midterm** (25%) on Monday, October 19 and a **final exam** (30%)
+on Monday, December 7, both held in class. See the [schedule](/) for any
+updates.
 
 Unlike homework questions, which are designed to be technical and to push you
 past the course material, exams are meant to be relatively easier questions that

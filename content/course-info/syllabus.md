@@ -57,13 +57,15 @@ Recorded walkthroughs of recitation problems are collected under
 - **Linear models and optimization:** the perceptron, gradient descent,
   empirical risk minimization, linear regression, and logistic regression
 - **Margin-based and kernel methods:** linear support vector machines, nonlinear
-  modeling with kernels, kernel SVMs, and Gaussian processes
-- **Neural networks:** feedforward networks and transformers
+  modeling with kernels, and kernel SVMs or Gaussian processes
 - **Tree-based and ensemble methods:** decision trees, gradient boosted
   regression trees, AdaBoost, bagging, and random forests
 - **Evaluating and debugging models:** the bias-variance decomposition, model
   debugging, and performance metrics
-- **Unsupervised learning:** dimensionality reduction and PCA
+- **Unsupervised learning and representation:** PCA and autoencoders
+- **Neural networks and modern deep learning:** feedforward networks,
+  transformers, LLM pretraining and post-training (SFT and RL), and diffusion
+  or flow matching
 
 See the [schedule](/) for the week by week breakdown. Topics are tentative and
 may shift as the semester goes on.
