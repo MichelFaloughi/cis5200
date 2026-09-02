@@ -27,7 +27,11 @@ is worth considering.
 ## Homeworks
 
 Beyond Homework 0 there are **five homeworks** over the semester, with roughly
-two weeks to complete each one.
+two weeks to complete each one. Together they are worth 20% of your grade.
+
+Most homeworks have a programming component, completed in Jupyter notebooks
+(Google Colab works well) using Python and PyTorch. Submissions go through
+Gradescope.
 
 Expect homework problems to challenge you in ways that require thinking a little
 beyond the material covered in lecture. Homeworks carry the bulk of the
@@ -39,7 +43,8 @@ encouraged, subject to the collaboration policy on that same page.
 
 ## Exams
 
-There is a midterm exam and a final exam in December.
+There is a **midterm** (25%) and a **final exam** in December (30%). See the
+[schedule](/) for dates as they are confirmed.
 
 Unlike homework questions, which are designed to be technical and to push you
 past the course material, exams are meant to be relatively easier questions that
@@ -49,7 +54,13 @@ covered in class. There is no collaboration permitted on exams.
 ## Oral Assessments
 
 There are **two oral assessments**, worth 12.5% each, for 25% of your grade in
-total. They are currently scheduled for weeks 8 and 12; see the
-[schedule](/) for dates.
+total. They take place in roughly weeks 8 and 12; see the [schedule](/) for
+dates.
 
-Format and logistics are still to be announced.
+An oral assessment is a sit-down, interview-style session modeled on a machine
+learning engineering interview. Your TA asks you machine learning questions and
+grades your answers. The goal is to prepare you for real-world MLE interviews.
+
+**Scheduling:** each TA has a Calendly link, which you use to book your slot
+with your TA. If none of your TA's times work for you, email them and we will
+find another TA who can take you.

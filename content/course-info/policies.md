@@ -6,8 +6,7 @@ description: The expectations and norms that govern this course. Please read car
 ## Attendance, Zoom, and Recordings
 
 You may attend over Zoom as much as you'd like. All classes are recorded, and
-recordings are released immediately. Recitations are recommended but optional.
-You are responsible for any material covered in class.
+recordings are released immediately on Canvas.
 
 Two honest caveats about attending remotely:
 
@@ -20,6 +19,9 @@ Two honest caveats about attending remotely:
   entirely, one lecture had the in-room mic die halfway through and finished on
   a laptop mic, and screen sharing is occasionally missed when switching between
   tutorial Jupyter notebooks.
+
+If those sound like things that may bother you, there is of course still the
+option to attend in person.
 
 ## Late Submissions
 
@@ -66,7 +68,9 @@ course. A few caveats:
 - **It will cost you on exams.** If you lean on an AI companion too heavily, you
   may find yourself at a significant disadvantage during exams and oral
   assessments. Homework is meant to challenge you enough that exam questions
-  feel comparatively easy.
+  feel comparatively easy. Remember that 80% of your grade comes from the oral
+  assessments, the midterm, and the final, where you will not have access to
+  language models.
 
 ## Academic Integrity
 
@@ -74,4 +78,4 @@ Violations of Penn's [Code of Academic Integrity](https://catalog.upenn.edu/penn
 
 ## Accommodations
 
-Students requesting accommodations should contact the [Weingarten Learning Resources Center](https://www.vpul.upenn.edu/lrc/) and forward their letter to the instructor as early in the semester as possible.
+Students requesting accommodations should contact the [Weingarten Center](https://www.vpul.upenn.edu/lrc/) and forward their letter to the instructor as early in the semester as possible.
