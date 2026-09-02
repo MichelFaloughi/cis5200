@@ -63,8 +63,7 @@ Recorded walkthroughs of recitation problems are collected under
   regression trees, AdaBoost, bagging, and random forests
 - **Evaluating and debugging models:** the bias-variance decomposition, model
   debugging, and performance metrics
-- **Unsupervised learning:** dimensionality reduction and PCA, k-means
-  clustering, and Gaussian mixture models
+- **Unsupervised learning:** dimensionality reduction and PCA
 
 See the [schedule](/) for the week by week breakdown. Topics are tentative and
 may shift as the semester goes on.
