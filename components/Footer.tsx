@@ -48,6 +48,14 @@ export default function Footer() {
                 Gradescope
               </a>
             </li>
+            <li>
+              <a
+                href={config.links.panopto}
+                className="text-neutral-700 transition-colors hover:text-penn-red-600 dark:text-neutral-300 dark:hover:text-penn-red-400"
+              >
+                Panopto
+              </a>
+            </li>
           </ul>
         </div>
 

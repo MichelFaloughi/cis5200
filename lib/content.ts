@@ -31,6 +31,7 @@ export type CourseConfig = {
     ed: string;
     canvas: string;
     gradescope: string;
+    panopto: string;
     officeHoursCalendar: string;
     weingarten: string;
     recitationPlaylist: string;

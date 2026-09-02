@@ -109,6 +109,12 @@ export default function TopBar({
           >
             Gradescope
           </a>
+          <a
+            href={config.links.panopto}
+            className="rounded-md px-3 py-2 text-sm font-medium text-penn-blue-600 transition-colors hover:bg-penn-blue-50 hover:text-penn-blue-700 dark:text-penn-blue-200 dark:hover:bg-penn-blue-900/30 dark:hover:text-white"
+          >
+            Panopto
+          </a>
         </nav>
 
         <div className="ml-auto sm:ml-0">
