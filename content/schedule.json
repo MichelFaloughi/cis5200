@@ -31,7 +31,7 @@
     { "date": "2026-12-02", "topic": "Diffusion or Flow Matching", "recording": "#", "notes": "#" },
     { "date": "2026-12-07", "topic": "Final Exam" }
   ], "recitations": [
-    { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "#" },
+    { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "https://docs.google.com/presentation/d/1i96X0niBdIvx25nqjx2I6dZA9SijP1YekF_t2winH_M/edit?usp=sharing" },
     { "week": 3, "title": "Recitation 2: kNN + Linear Models", "slides": "#" },
     { "week": 4, "title": "Recitation 3: Gradient Descent", "slides": "#" },
     { "week": 5, "title": "Recitation 4: Linear Regression", "slides": "#" },
