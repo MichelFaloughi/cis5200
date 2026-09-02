@@ -52,9 +52,9 @@
     { "name": "HW4", "due": "2026-11-23", "href": "#" },
     { "name": "HW5", "due": "2026-12-07", "href": "#" }
   ], "exams": [
-    { "name": "Oral Assessment 1", "week": 8, "date": "2026-10-14", "dateLabel": "Wed Oct 14", "href": "#" },
+    { "name": "Oral Assessment 1", "week": 11, "date": "2026-11-04", "dateLabel": "Wed Nov 4", "href": "#" },
     { "name": "Midterm Exam", "week": 9, "date": "2026-10-19", "dateLabel": "Mon Oct 19", "href": "#" },
-    { "name": "Oral Assessment 2", "week": 12, "date": "2026-11-11", "dateLabel": "Wed Nov 11", "href": "#" },
+    { "name": "Oral Assessment 2", "week": 13, "date": "2026-11-18", "dateLabel": "Wed Nov 18", "href": "#" },
     { "name": "Final Exam", "week": 16, "date": "2026-12-07", "dateLabel": "Mon Dec 7", "href": "#" }
   ]
 }

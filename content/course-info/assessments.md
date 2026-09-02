@@ -55,7 +55,7 @@ covered in class. There is no collaboration permitted on exams.
 ## Oral Assessments
 
 There are **two oral assessments**, worth 12.5% each, for 25% of your grade in
-total. They take place in roughly weeks 8 and 12; see the [schedule](/) for
+total. They take place in roughly weeks 11 and 13; see the [schedule](/) for
 dates.
 
 An oral assessment is a sit-down, interview-style session modeled on a machine
