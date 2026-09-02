@@ -31,20 +31,19 @@
     { "date": "2026-12-02", "topic": "Diffusion or Flow Matching", "recording": "#", "notes": "#" },
     { "date": "2026-12-07", "topic": "Final Exam" }
   ], "recitations": [
-    { "week": 1, "title": "Math & Probability Review", "slides": "#" },
-    { "week": 2, "title": "Supervised Learning & kNN Practice", "slides": "#" },
-    { "week": 3, "title": "Linear Models & Perceptron", "slides": "#" },
-    { "week": 4, "title": "Gradient Descent Practice", "slides": "#" },
-    { "week": 5, "title": "Regression Walkthrough", "slides": "#" },
-    { "week": 6, "title": "SVM & Kernels Practice", "slides": "#" },
-    { "week": 7, "title": "Kernel Methods & Neural Networks", "slides": "#" },
-    { "week": 8, "title": "Midterm Review Session", "slides": "#" },
-    { "week": 9, "title": "Boosting Walkthrough", "slides": "#" },
-    { "week": 10, "title": "Ensemble Methods Practice", "slides": "#" },
-    { "week": 11, "title": "Bias-Variance & Model Debugging", "slides": "#" },
-    { "week": 12, "title": "Metrics & PCA Practice", "slides": "#" },
-    { "week": 13, "title": "Transformers Practice", "slides": "#" },
-    { "week": 15, "title": "Final Review Session", "slides": "#" }
+    { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "#" },
+    { "week": 3, "title": "Recitation 2: kNN + Linear Models", "slides": "#" },
+    { "week": 4, "title": "Recitation 3: Gradient Descent", "slides": "#" },
+    { "week": 5, "title": "Recitation 4: Linear Regression", "slides": "#" },
+    { "week": 6, "title": "Recitation 5: SVMs + Intro to Kernels", "slides": "#" },
+    { "week": 7, "title": "Recitation 6: Kernels + Neural Networks", "slides": "#" },
+    { "week": 8, "title": "Midterm Review Session (no recitation)", "slides": "#" },
+    { "week": 9, "title": "Recitation 7: Boosting", "slides": "#" },
+    { "week": 10, "title": "Recitation 8: Bagging + Random Forests", "slides": "#" },
+    { "week": 11, "title": "Recitation 9: Bias/Variance + Debugging Walkthrough", "slides": "#" },
+    { "week": 12, "title": "Recitation 10: Metrics + PCA + Autoencoders", "slides": "#" },
+    { "week": 13, "title": "Recitation 11: Transformers", "slides": "#" },
+    { "week": 15, "title": "Final Review Session (tentative)", "slides": "#" }
   ], "homeworks": [
     { "name": "HW0", "due": "2026-09-16", "href": "#" },
     { "name": "HW1", "due": "2026-10-07", "href": "#" },
