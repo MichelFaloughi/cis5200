@@ -57,6 +57,7 @@ export type Recitation = {
   week: number;
   title: string;
   slides?: string;
+  recording?: string;
 };
 
 export type Homework = {

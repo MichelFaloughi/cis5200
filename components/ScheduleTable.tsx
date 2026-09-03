@@ -231,8 +231,18 @@ function RecitationCell({ recitation }: { recitation?: Recitation }) {
       <span className="font-medium text-neutral-900 dark:text-neutral-100">
         {recitation.title}
       </span>
-      {recitation.slides && (
-        <SubLink href={recitation.slides} label="Slides" />
+      {(recitation.slides || recitation.recording) && (
+        <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+          {recitation.slides && (
+            <SubLink href={recitation.slides} label="Slides" />
+          )}
+          {recitation.slides && recitation.recording && (
+            <span aria-hidden>·</span>
+          )}
+          {recitation.recording && (
+            <SubLink href={recitation.recording} label="Recording" />
+          )}
+        </div>
       )}
     </div>
   );
