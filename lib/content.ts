@@ -58,6 +58,8 @@ export type Recitation = {
   title: string;
   slides?: string;
   recording?: string;
+  // Extra named links shown after Slides and Recording.
+  links?: Array<{ label: string; href: string }>;
 };
 
 export type Homework = {
