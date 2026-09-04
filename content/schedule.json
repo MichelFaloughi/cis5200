@@ -30,7 +30,7 @@
     { "date": "2026-11-30", "topic": "LLM Post-training (SFT, RL)", "recording": "https://upenn.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%2232c5d08b-5468-465a-aaa3-b4a9010f052d%22", "notes": "https://canvas.upenn.edu/courses/1947654/files/folder/Lectures" },
     { "date": "2026-12-02", "topic": "Diffusion or Flow Matching", "recording": "https://upenn.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%2232c5d08b-5468-465a-aaa3-b4a9010f052d%22", "notes": "https://canvas.upenn.edu/courses/1947654/files/folder/Lectures" },
     { "date": "2026-12-07", "topic": "Final Exam" }], "recitations": [
-    { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "https://drive.google.com/file/d/13giRSBxD4-IanjqpekbuHcoiQQCalqRa/view?usp=drive_link", "recording": "https://www.youtube.com/watch?v=WGR96ofwp4E", "links": [{ "label": "Course Logistics", "href": "https://youtu.be/7O9cN92kR5w" }] },
+    { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "https://drive.google.com/file/d/13giRSBxD4-IanjqpekbuHcoiQQCalqRa/view?usp=drive_link", "recording": "https://www.youtube.com/watch?v=WGR96ofwp4E", "links": [{ "label": "Course Logistics", "href": "https://youtu.be/7O9cN92kR5w" }, { "label": "Math Review", "href": "https://www.youtube.com/watch?v=DEUR6SewLkg" }] },
     { "week": 3, "title": "Recitation 2: kNN + Linear Models", "slides": "#" },
     { "week": 4, "title": "Recitation 3: Gradient Descent", "slides": "#" },
     { "week": 5, "title": "Recitation 4: Linear Regression", "slides": "#" },
