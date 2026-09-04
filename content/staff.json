@@ -181,18 +181,6 @@
       "bio": ""
     },
     {
-      "name": "Arjun",
-      "email": "arjaras@engineering.upenn.edu",
-      "major": "",
-      "year": "Senior",
-      "photo": "",
-      "linkedin": "",
-      "website": "",
-      "github": "",
-      "calendly": "",
-      "bio": ""
-    },
-    {
       "name": "Mohit Shah",
       "email": "moshah@engineering.upenn.edu",
       "major": "Computer Engineering & Robotics",
@@ -207,12 +195,12 @@
     {
       "name": "Madhav Sharma",
       "email": "madhavsh@wharton.upenn.edu",
-      "major": "",
-      "year": "",
-      "photo": "",
-      "linkedin": "",
+      "major": "CIS & Finance",
+      "year": "Senior",
+      "photo": "/headshots/madhav-sharma.jpg",
+      "linkedin": "https://www.linkedin.com/in/madhav07/",
       "website": "",
-      "github": "",
+      "github": "https://github.com/Madhav-Sharma-07",
       "calendly": "",
       "bio": ""
     },
@@ -249,6 +237,18 @@
       "linkedin": "https://www.linkedin.com/in/sungyuncho0912/",
       "website": "https://www.sungcho.life",
       "github": "https://github.com/sungycho",
+      "calendly": "",
+      "bio": ""
+    },
+    {
+      "name": "Ronit Kapoor",
+      "email": "ronkap@sas.upenn.edu",
+      "major": "Computer Science",
+      "year": "Junior",
+      "photo": "/headshots/ronit-kapoor.jpg",
+      "linkedin": "",
+      "website": "",
+      "github": "",
       "calendly": "",
       "bio": ""
     }
