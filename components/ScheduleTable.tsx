@@ -37,12 +37,20 @@ export default function ScheduleTable({
   const recitationsByWeek = new Map<number, Recitation>();
   for (const r of recitations) recitationsByWeek.set(r.week, r);
 
-  const homeworksByWeek = new Map<number, Homework[]>();
-  for (const h of homeworks) {
-    const w = getWeekNumber(h.due);
+  // Each homework appears twice: "out" in its release week, "due" in its due week.
+  const homeworksByWeek = new Map<number, HomeworkEvent[]>();
+  const pushHw = (w: number, ev: HomeworkEvent) => {
     const arr = homeworksByWeek.get(w) ?? [];
-    arr.push(h);
+    arr.push(ev);
     homeworksByWeek.set(w, arr);
+  };
+  for (const h of homeworks) {
+    if (h.released) pushHw(getWeekNumber(h.released), { hw: h, kind: "out", date: h.released });
+    pushHw(getWeekNumber(h.due), { hw: h, kind: "due", date: h.due });
+  }
+  // Within a week, list what is due before what comes out.
+  for (const arr of homeworksByWeek.values()) {
+    arr.sort((a, b) => (a.kind === b.kind ? a.date.localeCompare(b.date) : a.kind === "due" ? -1 : 1));
   }
 
   const examsByWeek = new Map<number, Exam[]>();
@@ -253,14 +261,16 @@ function RecitationCell({ recitation }: { recitation?: Recitation }) {
   );
 }
 
-function HomeworkCell({ items }: { items: Homework[] }) {
+type HomeworkEvent = { hw: Homework; kind: "out" | "due"; date: string };
+
+function HomeworkCell({ items }: { items: HomeworkEvent[] }) {
   if (items.length === 0) {
     return <span className="text-neutral-400 dark:text-neutral-600">–</span>;
   }
   return (
     <ul className="flex flex-col gap-2">
-      {items.map((hw) => (
-        <li key={hw.name} className="flex flex-col leading-tight">
+      {items.map(({ hw, kind, date }) => (
+        <li key={`${hw.name}-${kind}`} className="flex flex-col leading-tight">
           {isLive(hw.href) ? (
             <a
               href={hw.href}
@@ -276,7 +286,7 @@ function HomeworkCell({ items }: { items: Homework[] }) {
             </span>
           )}
           <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            due {formatShortDate(hw.due)}
+            {kind} {formatShortDate(date)}
           </span>
         </li>
       ))}

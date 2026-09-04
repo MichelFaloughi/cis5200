@@ -64,6 +64,8 @@ export type Recitation = {
 
 export type Homework = {
   name: string;
+  // ISO date the homework is released; shown as "out" in that week.
+  released?: string;
   due: string;
   href?: string;
 };
