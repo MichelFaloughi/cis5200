@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type PreviewEvent = {
   label: string;
@@ -9,7 +9,18 @@ export type PreviewEvent = {
   start?: string;
   end?: string;
   location?: string;
+  // Optional links shown in the detail dialog (recording, notes, meeting link).
+  links?: Array<{ label: string; href: string }>;
 };
+
+const TYPE_LABEL: Record<PreviewEvent["type"], string> = {
+  lecture: "Lecture",
+  oh: "Office Hours",
+  exam: "Assessment",
+  holiday: "No Class",
+};
+
+type OnSelect = (ev: PreviewEvent, date: string) => void;
 
 const MONTH_NAMES = [
   "January",
@@ -103,6 +114,8 @@ export default function CalendarPreview({
   const [weekIndex, setWeekIndex] = useState(
     initialWeek === -1 ? (todayIso < weekOneMonday ? 0 : weeks.length - 1) : initialWeek
   );
+  const [selected, setSelected] = useState<{ ev: PreviewEvent; date: string } | null>(null);
+  const onSelect: OnSelect = (ev, date) => setSelected({ ev, date });
 
   const navButton =
     "rounded-md border border-neutral-200 px-2.5 py-1 text-sm text-neutral-700 transition-colors enabled:hover:border-penn-red-300 enabled:hover:text-penn-red-600 disabled:opacity-40 dark:border-neutral-800 dark:text-neutral-300 dark:enabled:hover:border-penn-red-500/40 dark:enabled:hover:text-penn-red-400";
@@ -205,9 +218,17 @@ export default function CalendarPreview({
       </div>
 
       {view === "month" ? (
-        <MonthGrid monthKey={months[monthIndex]} events={events} todayIso={todayIso} />
+        <MonthGrid monthKey={months[monthIndex]} events={events} todayIso={todayIso} onSelect={onSelect} />
       ) : (
-        <WeekGrid startSunday={weeks[weekIndex]} events={events} todayIso={todayIso} />
+        <WeekGrid startSunday={weeks[weekIndex]} events={events} todayIso={todayIso} onSelect={onSelect} />
+      )}
+
+      {selected && (
+        <EventDialog
+          ev={selected.ev}
+          date={selected.date}
+          onClose={() => setSelected(null)}
+        />
       )}
     </div>
   );
@@ -217,10 +238,12 @@ function MonthGrid({
   monthKey,
   events,
   todayIso,
+  onSelect,
 }: {
   monthKey: string;
   events: Record<string, PreviewEvent[]>;
   todayIso: string;
+  onSelect: OnSelect;
 }) {
   const [year, month] = monthKey.split("-").map(Number);
   const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
@@ -269,16 +292,18 @@ function MonthGrid({
                   </span>
                   <div className="mt-1 flex flex-col gap-0.5">
                     {dayEvents.map((ev, j) => (
-                      <span
+                      <button
                         key={j}
+                        type="button"
                         title={ev.label}
+                        onClick={() => dateIso && onSelect(ev, dateIso)}
                         className={
-                          "truncate rounded px-1 py-0.5 text-[10px] leading-tight " +
+                          "block w-full truncate rounded px-1 py-0.5 text-left text-[10px] leading-tight transition-opacity hover:opacity-80 " +
                           chipClass[ev.type]
                         }
                       >
                         {ev.label}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 </>
@@ -352,10 +377,12 @@ function WeekGrid({
   startSunday,
   events,
   todayIso,
+  onSelect,
 }: {
   startSunday: string;
   events: Record<string, PreviewEvent[]>;
   todayIso: string;
+  onSelect: OnSelect;
 }) {
   const days = Array.from({ length: 7 }, (_, i) => addDays(startSunday, i));
   const hasAllDay = days.some((d) =>
@@ -406,16 +433,18 @@ function WeekGrid({
                 {(events[dateIso] ?? [])
                   .filter((ev) => !ev.start || !ev.end)
                   .map((ev, j) => (
-                    <span
+                    <button
                       key={j}
+                      type="button"
                       title={ev.label}
+                      onClick={() => onSelect(ev, dateIso)}
                       className={
-                        "block truncate rounded px-1.5 py-0.5 text-[10px] leading-snug " +
+                        "block w-full truncate rounded px-1.5 py-0.5 text-left text-[10px] leading-snug transition-opacity hover:opacity-80 " +
                         chipClass[ev.type]
                       }
                     >
                       {ev.label}
-                    </span>
+                    </button>
                   ))}
               </div>
             ))}
@@ -501,14 +530,16 @@ function WeekGrid({
                       lines - (showTime ? 1 : 0) - (showLocation ? 1 : 0)
                     );
                     return (
-                    <div
+                    <button
                       key={j}
+                      type="button"
+                      onClick={() => onSelect(ev, dateIso)}
                       title={
                         `${ev.label} (${formatTimeRange(ev.start, ev.end)})` +
                         (ev.location ? `, ${ev.location}` : "")
                       }
                       className={
-                        "absolute overflow-hidden rounded border border-white/40 px-1.5 py-0.5 text-[11px] leading-snug dark:border-black/20 " +
+                        "absolute overflow-hidden rounded border border-white/40 px-1.5 py-0.5 text-left text-[11px] leading-snug transition-opacity hover:opacity-80 dark:border-black/20 " +
                         chipClass[ev.type]
                       }
                       style={{
@@ -533,7 +564,7 @@ function WeekGrid({
                           {ev.location}
                         </span>
                       )}
-                    </div>
+                    </button>
                     );
                   })}
                 </div>
@@ -555,4 +586,112 @@ function formatTime12(time: string): string {
 
 function formatTimeRange(start: string, end: string): string {
   return `${formatTime12(start)} to ${formatTime12(end)}`;
+}
+
+function longDate(dateIso: string): string {
+  return new Date(dateIso + "T00:00:00").toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function EventDialog({
+  ev,
+  date,
+  onClose,
+}: {
+  ev: PreviewEvent;
+  date: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  const hasTime = Boolean(ev.start && ev.end);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="event-dialog-title"
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-sm rounded-lg border border-neutral-200 bg-white p-5 shadow-xl dark:border-neutral-800 dark:bg-neutral-900"
+      >
+        <div className="flex items-start justify-between gap-3">
+          <span
+            className={
+              "inline-block rounded px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide " +
+              chipClass[ev.type]
+            }
+          >
+            {TYPE_LABEL[ev.type]}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="-mr-1 -mt-1 rounded p-1 text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-200"
+          >
+            <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor" aria-hidden>
+              <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+            </svg>
+          </button>
+        </div>
+
+        <h4
+          id="event-dialog-title"
+          className="mt-3 text-base font-semibold leading-snug text-neutral-900 dark:text-neutral-100"
+        >
+          {ev.label}
+        </h4>
+
+        <dl className="mt-3 space-y-1.5 text-sm text-neutral-700 dark:text-neutral-300">
+          <div className="flex gap-2">
+            <dt className="w-16 shrink-0 text-neutral-500 dark:text-neutral-400">When</dt>
+            <dd>
+              {longDate(date)}
+              {hasTime && (
+                <>
+                  <br />
+                  {formatTimeRange(ev.start!, ev.end!)}
+                </>
+              )}
+            </dd>
+          </div>
+          {ev.location && (
+            <div className="flex gap-2">
+              <dt className="w-16 shrink-0 text-neutral-500 dark:text-neutral-400">Where</dt>
+              <dd>{ev.location}</dd>
+            </div>
+          )}
+        </dl>
+
+        {ev.links && ev.links.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {ev.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md bg-penn-blue-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-penn-blue-700 dark:bg-penn-blue-500 dark:hover:bg-penn-blue-400"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

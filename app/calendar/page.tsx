@@ -12,6 +12,11 @@ import {
 
 export const metadata = { title: "Calendar" };
 
+/** A link is live once content has a real URL; "#" is the placeholder. */
+function isLive(href?: string): href is string {
+  return Boolean(href) && href !== "#";
+}
+
 const WEEKDAY_LABEL: Record<string, string> = {
   MO: "Monday",
   TU: "Tuesday",
@@ -65,6 +70,10 @@ function buildPreviewData() {
         start: semester.lectureStartTime,
         end: semester.lectureEndTime,
         location: semester.location,
+        links: [
+          ...(isLive(lecture.recording) ? [{ label: "Recording", href: lecture.recording }] : []),
+          ...(isLive(lecture.notes) ? [{ label: "Notes", href: lecture.notes }] : []),
+        ],
       });
     }
   }
@@ -72,7 +81,11 @@ function buildPreviewData() {
   // Exams have no fixed time yet, so they render in the all-day row.
   for (const exam of exams) {
     if (!exam.date) continue;
-    push(exam.date, { label: exam.name, type: "exam" });
+    push(exam.date, {
+      label: exam.name,
+      type: "exam",
+      links: isLive(exam.href) ? [{ label: "Details", href: exam.href }] : [],
+    });
   }
 
   for (const oh of officeHours) {
@@ -87,6 +100,7 @@ function buildPreviewData() {
         start: oh.start,
         end: oh.end,
         location: oh.location,
+        links: oh.zoom ? [{ label: "Join online", href: oh.zoom }] : [],
       });
     }
   }
