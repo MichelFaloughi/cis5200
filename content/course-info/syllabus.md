@@ -47,6 +47,23 @@ offered each week:
 - Fridays, 3:30 PM to 4:30 PM
 - Fridays, 5:00 PM to 6:00 PM
 
+Skirkanich Hall is at 210 S 33rd St, Philadelphia, PA 19104; the Berger
+Auditorium is on the ground floor.
+[Open in Google Maps](https://www.google.com/maps/search/?api=1&query=Skirkanich+Hall,+210+S+33rd+St,+Philadelphia,+PA+19104).
+
+<div class="not-prose my-6 overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+  <iframe
+    title="Map of Skirkanich Hall, University of Pennsylvania"
+    src="https://maps.google.com/maps?q=Skirkanich+Hall,+210+S+33rd+St,+Philadelphia,+PA+19104&z=17&output=embed"
+    width="100%"
+    height="320"
+    style="border:0; display:block"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+</div>
+
 Recorded walkthroughs of recitation problems are collected under
 [TA Resources](/resources/ta-resources).
 
