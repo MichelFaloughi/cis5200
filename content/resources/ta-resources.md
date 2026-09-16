@@ -10,8 +10,6 @@ title: TA Resources
 
 ## Aadam's Math Refresher Playlists
 
-Short video series by Aadam Mulla covering the math behind the course:
-
 - [Linear Algebra for Machine Learning (CIS 5200)](https://www.youtube.com/playlist?list=PLAxDQiNFXmOw)
 - [Probability for Machine Learning (CIS 5200)](https://www.youtube.com/playlist?list=PLWpR3ZLzFFcM)
 - [Convexity for Machine Learning (CIS 5200)](https://www.youtube.com/playlist?list=PLI0XN3uQKdko)
