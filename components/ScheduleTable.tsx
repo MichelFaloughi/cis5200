@@ -230,14 +230,18 @@ function LectureCell({ lecture }: { lecture: Lecture }) {
   );
 }
 
-// Every recitation shows the same four links; missing ones render greyed out.
+// Every recitation shows the same four links. Missing or "#" values render
+// greyed out; a null value means "not applicable" and the label is hidden.
 function recitationLinks(r: Recitation): Array<{ label: string; href: string }> {
-  return [
-    { label: "Slides", href: r.slides ?? "#" },
-    { label: "Recordings", href: r.recording ?? "#" },
-    { label: "Worksheet", href: r.worksheet ?? "#" },
-    { label: "Solutions", href: r.solutions ?? "#" },
+  const entries: Array<[string, string | null | undefined]> = [
+    ["Slides", r.slides],
+    ["Recordings", r.recording],
+    ["Worksheet", r.worksheet],
+    ["Solutions", r.solutions],
   ];
+  return entries
+    .filter(([, href]) => href !== null)
+    .map(([label, href]) => ({ label, href: href ?? "#" }));
 }
 
 function RecitationCell({ recitation }: { recitation?: Recitation }) {

@@ -56,11 +56,12 @@ export type Lecture = {
 export type Recitation = {
   week: number;
   title: string;
-  // Each renders as a link when set to a real URL, greyed out otherwise.
-  slides?: string;
-  recording?: string;
-  worksheet?: string;
-  solutions?: string;
+  // Each renders as a link when set to a real URL, greyed out when "#" or
+  // missing, and hidden entirely when null (e.g. a recitation with no worksheet).
+  slides?: string | null;
+  recording?: string | null;
+  worksheet?: string | null;
+  solutions?: string | null;
 };
 
 export type Homework = {
