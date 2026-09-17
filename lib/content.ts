@@ -56,10 +56,11 @@ export type Lecture = {
 export type Recitation = {
   week: number;
   title: string;
+  // Each renders as a link when set to a real URL, greyed out otherwise.
   slides?: string;
   recording?: string;
-  // Extra named links shown after Slides and Recording.
-  links?: Array<{ label: string; href: string }>;
+  worksheet?: string;
+  solutions?: string;
 };
 
 export type Homework = {

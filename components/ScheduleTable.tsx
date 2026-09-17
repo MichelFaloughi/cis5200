@@ -230,11 +230,13 @@ function LectureCell({ lecture }: { lecture: Lecture }) {
   );
 }
 
+// Every recitation shows the same four links; missing ones render greyed out.
 function recitationLinks(r: Recitation): Array<{ label: string; href: string }> {
   return [
-    ...(r.slides ? [{ label: "Slides", href: r.slides }] : []),
-    ...(r.recording ? [{ label: "Recording", href: r.recording }] : []),
-    ...(r.links ?? []),
+    { label: "Slides", href: r.slides ?? "#" },
+    { label: "Recordings", href: r.recording ?? "#" },
+    { label: "Worksheet", href: r.worksheet ?? "#" },
+    { label: "Solutions", href: r.solutions ?? "#" },
   ];
 }
 
@@ -247,16 +249,14 @@ function RecitationCell({ recitation }: { recitation?: Recitation }) {
       <span className="font-medium text-neutral-900 dark:text-neutral-100">
         {recitation.title}
       </span>
-      {recitationLinks(recitation).length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-          {recitationLinks(recitation).map((link, i) => (
-            <span key={link.label} className="flex items-center gap-2">
-              {i > 0 && <span aria-hidden>·</span>}
-              <SubLink href={link.href} label={link.label} />
-            </span>
-          ))}
-        </div>
-      )}
+      <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        {recitationLinks(recitation).map((link, i) => (
+          <span key={link.label} className="flex items-center gap-2">
+            {i > 0 && <span aria-hidden>·</span>}
+            <SubLink href={link.href} label={link.label} />
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
