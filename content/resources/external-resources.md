@@ -11,15 +11,3 @@ description: Outside references for brushing up on the math and programming behi
 ## Machine Learning
 
 - [StatQuest with Josh Starmer: Machine Learning playlist](https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF): short, friendly videos building intuition for most of the algorithms covered in this course
-
-## Reference Texts
-
-There is no required textbook for CIS 5200. Readings and references are posted
-on Canvas alongside the lectures they accompany. These general texts are also
-useful companions:
-
-- [Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/) by Bishop (free PDF)
-- [The Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/) by Hastie, Tibshirani, and Friedman (free PDF)
-- [Deep Learning](https://www.deeplearningbook.org/) by Goodfellow, Bengio, and Courville (free online)
-
-More links will be added here during the semester.
