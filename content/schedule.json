@@ -33,7 +33,7 @@
   ], "recitations": [
     { "week": 2, "title": "Recitation 1: Course Intro + Math Review", "slides": "https://drive.google.com/file/d/1nN_IaXEmaqzIeFVRi7pSXXZLl9YAVsIH/view?usp=sharing", "recording": "https://www.youtube.com/playlist?list=PLO5d9qeJ2P_s", "worksheet": null, "solutions": null },
     { "week": 3, "title": "Recitation 2: kNN + Linear Models", "slides": "https://drive.google.com/file/d/1Cr7uLTrUbLXfwsqnkWkDALqK5Fr8Iq6x/view?usp=sharing", "recording": "https://www.youtube.com/playlist?list=PLDDbYuh2cMs0", "worksheet": "#", "solutions": "#" },
-    { "week": 4, "title": "Recitation 3: Gradient Descent", "slides": "#", "recording": "#", "worksheet": "#", "solutions": "#" },
+    { "week": 4, "title": "Recitation 3: Gradient Descent", "slides": "#", "recording": "https://www.youtube.com/playlist?list=PLeD0ALCV0SVs", "worksheet": "#", "solutions": "#" },
     { "week": 5, "title": "Recitation 4: Linear Regression", "slides": "#", "recording": "#", "worksheet": "#", "solutions": "#" },
     { "week": 6, "title": "Recitation 5: SVMs + Intro to Kernels", "slides": "#", "recording": "#", "worksheet": "#", "solutions": "#" },
     { "week": 7, "title": "Recitation 6: Kernels + Neural Networks", "slides": "#", "recording": "#", "worksheet": "#", "solutions": "#" },
