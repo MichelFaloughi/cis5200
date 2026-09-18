@@ -1,8 +1,9 @@
 import ScheduleTable from "@/components/ScheduleTable";
 import { getConfig, getCurrentWeek } from "@/lib/content";
 
-// Re-render hourly so the "current week" highlight advances without a deploy.
-export const revalidate = 3600;
+// Re-render at most once a minute: keeps the "current week" highlight fresh
+// and lets content edits show up right after a deploy instead of an hour later.
+export const revalidate = 60;
 
 export default function HomePage() {
   const config = getConfig();
