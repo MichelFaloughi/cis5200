@@ -320,9 +320,11 @@ function ExamCell({ items }: { items: Exam[] }) {
               {ex.name}
             </span>
           )}
-          <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            {ex.dateLabel}
-          </span>
+          {ex.dateLabel && (
+            <span className="text-xs text-neutral-500 dark:text-neutral-400">
+              {ex.dateLabel}
+            </span>
+          )}
         </li>
       ))}
     </ul>
