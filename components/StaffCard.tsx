@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { StaffMember } from "@/lib/content";
+import { obfuscateEmail, type StaffMember } from "@/lib/content";
 
 function PersonPlaceholder() {
   return (
@@ -98,12 +98,10 @@ export default function StaffCard({ member }: { member: StaffMember }) {
           </p>
         )}
         {member.email && (
-          <a
-            href={`mailto:${member.email}`}
-            className="break-all text-xs text-penn-blue-600 underline-offset-2 hover:underline dark:text-penn-blue-300"
-          >
-            {member.email}
-          </a>
+          // Plain text on purpose: a mailto link would hand the address to scrapers.
+          <span className="break-all text-xs text-neutral-600 dark:text-neutral-400">
+            {obfuscateEmail(member.email)}
+          </span>
         )}
         {member.bio && (
           <p className="mt-1 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">

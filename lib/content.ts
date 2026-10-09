@@ -111,6 +111,19 @@ export function getStaff(): Staff {
   return staffJson as Staff;
 }
 
+// Renders "name@seas.upenn.edu" as "name [at] seas.upenn [dot] edu" so
+// address harvesters cannot lift staff emails off the public page.
+export function obfuscateEmail(email: string): string {
+  const [user, domain] = email.split("@");
+  if (!domain) return email;
+  const lastDot = domain.lastIndexOf(".");
+  const host =
+    lastDot === -1
+      ? domain
+      : `${domain.slice(0, lastDot)} [dot] ${domain.slice(lastDot + 1)}`;
+  return `${user} [at] ${host}`;
+}
+
 export type Weekday = "MO" | "TU" | "WE" | "TH" | "FR" | "SA" | "SU";
 
 export type OfficeHour = {
